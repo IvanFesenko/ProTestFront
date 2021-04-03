@@ -1,11 +1,11 @@
-
-
-import { Header } from '../Header'
+import { Header, Footer, Main } from 'components';
 
 function App() {
   return (
     <>
-      <Header/>
+      <Header />
+      <Main>Основной контент</Main>
+      <Footer />
     </>
   );
 }
