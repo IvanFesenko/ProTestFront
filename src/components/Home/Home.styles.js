@@ -15,10 +15,23 @@ export const ButtonsWrapper = styled.div`
   padding-bottom: 12px;
 `;
 
+export const Quote = styled.h2`
+  font-size: 12px;
+  text-align: center;
+  font-weight: 700;
+`;
+
+export const QuoteAuthor = styled.p`
+  font-size: 12px;
+  text-align: center;
+  font-weight: 500;
+`;
+
 export const TestLink = styled(NavLink)`
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   height: 212px;
   width: 280px;
   font-size: 24px;
@@ -26,7 +39,7 @@ export const TestLink = styled(NavLink)`
   color: #fff;
   font-weight: 800;
   margin-bottom: 20px;
-  padding: 40px;
+  padding: 50px;
   background: ${secondaryBackground};
   :hover {
     background: ${orange};
