@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
+import { mainBackground } from 'assets/colors';
+
 export const Wrapper = styled.div`
-  background-color: #e5e5e5;
+  background-color: ${mainBackground};
 `;
 
 export const Container = styled.div`
