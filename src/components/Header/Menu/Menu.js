@@ -11,7 +11,7 @@ const Menu = () => {
     <Navigation>
       <List>
         {MENU_LINKS.map(link => (
-          <Item>
+          <Item key={link.name}>
             <Link to={link.value}>{link.name}</Link>
           </Item>
         ))}
