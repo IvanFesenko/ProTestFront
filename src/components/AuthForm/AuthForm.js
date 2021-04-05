@@ -41,9 +41,7 @@ const AuthForm = ({ auth }) => {
   const [password, setPassword] = useState('');
   const history = useHistory();
 
-  const handleChange = e => {
-    const { name, value } = e.target;
-
+  const handleChange = ({ target: { value, name } }) => {
     switch (name) {
       case 'name':
         return setName(value);
