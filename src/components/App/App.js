@@ -1,3 +1,4 @@
+import { Route } from 'react-router-dom';
 import { Header, Footer, Main, Home } from 'components';
 
 function App() {
@@ -5,7 +6,9 @@ function App() {
     <>
       <Header />
       <Main>
-        <Home />
+        <Route path="/home">
+          <Home />
+        </Route>
       </Main>
       <Footer />
     </>
