@@ -1,10 +1,13 @@
 import { Header, Footer, Main } from 'components';
+import ContactsPage from './../../views/ContactsPage'
 
 function App() {
   return (
     <>
       <Header />
-      <Main>Основной контент</Main>
+      <Main>
+        <ContactsPage/>
+      </Main>
       <Footer />
     </>
   );
