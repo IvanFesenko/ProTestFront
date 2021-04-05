@@ -1,0 +1,29 @@
+
+.ContactsCard{
+    width: 295px;
+    background: #FFF;
+    margin: 10px;
+}
+.ContactsCard > div{
+    padding: 19px 27px;
+}
+
+.ContactsCard h5{
+    font-size: 12px;
+    line-height: 12px;
+}
+
+.ContactsCard span{
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0.02em;
+}
+
+.ContactsCard p{
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #000;
+    font-weight: 600;
+}
