@@ -14,6 +14,10 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
   root: {
+    marginBottom: '20px',
+    '@media (min-width: 768px)': {
+      marginBottom: '24px',
+    },
     '& .MuiOutlinedInput-root': {
       borderRadius: '0px',
     },
@@ -113,14 +117,14 @@ const AuthForm = ({ auth }) => {
         <SignButton
           active={auth}
           type={auth ? 'submit' : 'button'}
-          onClick={!auth ? handleOnClick : undefined}
+          onClick={!auth ? handleOnClick : null}
         >
           Sign in
         </SignButton>
         <SignButton
           active={!auth}
           type={!auth ? 'submit' : 'button'}
-          onClick={auth ? handleOnClick : undefined}
+          onClick={auth ? handleOnClick : null}
         >
           Sign up
         </SignButton>

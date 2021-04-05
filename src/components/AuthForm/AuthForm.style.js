@@ -64,11 +64,6 @@ export const Span = styled.span`
 
 export const Field = styled(TextField)`
   width: 100%;
-  margin-bottom: 20px !important;
-
-  @media (min-width: 768px) {
-    margin-bottom: 24px !important;
-  }
 `;
 
 export const SignBlock = styled.div`
