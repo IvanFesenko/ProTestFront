@@ -1,15 +1,22 @@
-import { ButtonsWrapper, QuoteWrapper, TestLink } from './Home.styles';
+import {
+  ButtonsWrapper,
+  QuoteWrapper,
+  Quote,
+  QuoteAuthor,
+  QuoteAuthorInfo,
+  TestLink,
+} from './Home.styles';
 
 export const Home = () => {
   return (
     <>
       <QuoteWrapper>
-        <h2>
+        <Quote>
           “Regression testing. What is it? If the system compiles, that's good,
           if it boots, that's great!”
-        </h2>
-        <p>Linus Torvalds</p>
-        <p>Linux kernel creator, hacker, 1969</p>
+        </Quote>
+        <QuoteAuthor>Linus Torvalds</QuoteAuthor>
+        <QuoteAuthorInfo>Linux kernel creator, hacker, 1969</QuoteAuthorInfo>
       </QuoteWrapper>
       <ButtonsWrapper>
         <TestLink to={'/'}>QA technical training</TestLink>
