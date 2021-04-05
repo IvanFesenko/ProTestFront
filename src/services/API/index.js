@@ -24,11 +24,19 @@ export const authLogOut = async () => {
 };
 
 export const getTechnicalTests = async () => {
-  const { data } = await Axios.get('/tests/technical');
-  return data;
+  try {
+    const { data } = await Axios.get('/tests/technical');
+    return data.requestBody;
+  } catch (error) {
+    return [];
+  }
 };
 
 export const getTheoreticalTests = async () => {
-  const { data } = await Axios.get('/tests/theoretical');
-  return data;
+  try {
+    const { data } = await Axios.get('/tests/theoretical');
+    return data.requestBody;
+  } catch (error) {
+    return [];
+  }
 };
