@@ -4,3 +4,4 @@ export { Main } from './Main';
 export { Footer } from './Footer';
 export { Home } from './Home';
 export { AuthForm } from './AuthForm';
+export { Questions } from './Questions';

@@ -1,5 +1,5 @@
 import { Route } from 'react-router-dom';
-import { Header, Footer, Main, Home } from 'components';
+import { Header, Footer, Main, Home, Questions  } from 'components';
 import { AuthPage } from 'views';
 
 function App() {
@@ -7,6 +7,7 @@ function App() {
     <>
       <Header />
       <Main>
+
         <Route path="/">
           <Home />
         </Route>
@@ -16,6 +17,7 @@ function App() {
         <Route path="/register">
           <AuthPage auth={false} />
         </Route>
+          <Questions />
       </Main>
       <Footer />
     </>

@@ -1,0 +1,20 @@
+.questionBody{
+    width: 100%;
+    text-align: left;
+    padding: 40px 20px 0px 20px;
+}
+
+.questionCard{
+    background-color: white;
+    padding: 40px 20px;
+    margin-bottom: 20px;
+    border: 1px solid white;
+    @media
+}
+.questionCardErrorBord{
+    border: 1px solid #ff4562;
+}
+
+.questionItem{
+    margin-bottom: 16px;
+}
