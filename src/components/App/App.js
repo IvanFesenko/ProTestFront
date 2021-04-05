@@ -1,10 +1,12 @@
-import { Header, Footer, Main } from 'components';
+import { Header, Footer, Main, Questions } from 'components';
 
 function App() {
   return (
     <>
       <Header />
-      <Main>Основной контент</Main>
+      <Main>
+        <Questions />
+      </Main>
       <Footer />
     </>
   );

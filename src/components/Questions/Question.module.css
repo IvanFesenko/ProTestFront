@@ -1,0 +1,18 @@
+.test {
+ display: flow-root;
+}
+
+.questionsMain{
+ margin: 0 auto;
+ padding: 20px;
+
+}
+
+.questionNavigationButtons{
+ display: flex;
+ justify-content: space-between;
+}
+
+.questionNavigationStyleButton{
+  font-size: 12px;
+}
