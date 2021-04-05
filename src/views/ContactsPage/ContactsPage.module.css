@@ -1,0 +1,16 @@
+.OutTeam{
+    text-align: center;
+}
+
+.hr{
+    opacity: 0.15;
+    border: 1px solid #00122F;
+    width: 322px;
+    margin: 22px auto 29px;
+}
+
+.ContactsPageList{
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
