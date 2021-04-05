@@ -9,10 +9,11 @@ export const Wrapper = styled.div`
 export const Container = styled.div`
   width: 100%;
   margin: 0 auto;
+  padding: 0 20px;
   @media (min-width: 750px) {
     max-width: 652px;
   }
   @media (min-width: 900px) {
-    max-width: 820px;
+    max-width: 1070px;
   }
 `;
