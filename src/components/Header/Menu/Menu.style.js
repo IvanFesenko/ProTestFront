@@ -32,3 +32,11 @@ export const Link = styled(NavLink)`
     border-bottom: 1px solid ${orange};
   }
 `;
+
+export const Burger = styled.button`
+  width: 41px;
+  height: 100%;
+  border: none;
+  background-color: inherit;
+  outline: none;
+`;
