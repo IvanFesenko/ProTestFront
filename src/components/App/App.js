@@ -1,13 +1,15 @@
+
 import { Route } from 'react-router-dom';
 import { Header, Footer, Main, Home } from 'components';
-import { AuthPage } from 'views';
+import { AuthPage, ContactsPage } from 'views';
+
 
 function App() {
   return (
     <>
       <Header />
       <Main>
-        <Route path="/">
+        <Route exact path="/">
           <Home />
         </Route>
         <Route path="/auth">
@@ -15,6 +17,9 @@ function App() {
         </Route>
         <Route path="/register">
           <AuthPage auth={false} />
+        </Route>
+        <Route path="/contacts">
+          <ContactsPage />
         </Route>
       </Main>
       <Footer />
