@@ -6,7 +6,7 @@ function App() {
     <>
       <Header />
       <Main>
-        <Route path="/home">
+        <Route path="/">
           <Home />
         </Route>
       </Main>
