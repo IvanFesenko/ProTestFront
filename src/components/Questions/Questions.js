@@ -7,8 +7,7 @@ import { Button } from './Button/Button.style';
 import ArrowLeft from './Button/ArrowLeft';
 import ArrowRight from './Button/ArrowRight';
 
-import styles from './Question.module.css';
-
+import { QuestionsMain, QuestionNavigationButtons } from './Questions.style';
 import tempData from './tempData';
 
 function Questions() {
@@ -48,14 +47,14 @@ function Questions() {
   };
 
   return (
-    <div className={styles.questionsMain}>
+    <QuestionsMain>
       <QuestionHeader sendAnswers={sendAnswers} error={error} />
       <QuestionCard
         currentQuestion={currentQuestionIndex}
         questions={tempData}
         error={error}
       />
-      <div className={styles.questionNavigationButtons}>
+      <QuestionNavigationButtons>
         <Button onClick={prevQuestion}>
           <ArrowLeft />
           <span>Previous question</span>
@@ -64,8 +63,8 @@ function Questions() {
           <span>Next question</span>
           <ArrowRight />
         </Button>
-      </div>
-    </div>
+      </QuestionNavigationButtons>
+    </QuestionsMain>
   );
 }
 
