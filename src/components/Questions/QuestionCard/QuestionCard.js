@@ -3,7 +3,11 @@ import React, { useEffect, useState } from 'react';
 import { FormControlLabel, makeStyles } from '@material-ui/core';
 
 import RadioOrange from './Radiostyles';
-import styles from './QuestionCard.module.css';
+import {
+  QuestionCardStyle,
+  QuestionBodyStyle,
+  QuestionItemStyle,
+} from './QuestionCard.style';
 import {
   CurrentQuestions,
   CurrentQuestionsName,
@@ -43,11 +47,7 @@ function QuestionCard({ currentQuestion, questions, error }) {
 
   const style = useStyles();
   return (
-    <div
-      className={`${styles.questionCard} ${
-        error && styles.questionCardErrorBord
-      }`}
-    >
+    <QuestionCardStyle error={error}>
       <CurrentQuestions>
         Question
         <span className={'currentQuestion-number'}>
@@ -59,9 +59,9 @@ function QuestionCard({ currentQuestion, questions, error }) {
         {questions[currentQuestion].question}
       </CurrentQuestionsName>
 
-      <div className={styles.questionBody}>
+      <QuestionBodyStyle>
         {questions[currentQuestion].answers.map((answer, index) => (
-          <div className={styles.questionItem} key={index}>
+          <QuestionItemStyle key={index}>
             <FormControlLabel
               checked={questions[currentQuestion].userAnswer === answer}
               value={answer}
@@ -69,10 +69,10 @@ function QuestionCard({ currentQuestion, questions, error }) {
               label={answer}
               className={style.test}
             />
-          </div>
+          </QuestionItemStyle>
         ))}
-      </div>
-    </div>
+      </QuestionBodyStyle>
+    </QuestionCardStyle>
   );
 }
 

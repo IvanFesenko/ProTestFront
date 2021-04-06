@@ -10,7 +10,7 @@ const Button = styled.button`
   cursor: pointer;
   background-color: white;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding: 9px 13px;
   width: 55px;
@@ -26,10 +26,14 @@ const Button = styled.button`
     fill: white;
   }
   @media (min-width: 480px) {
-    width: 210px;
+    width: 180px;
     span {
       display: block;
     }
+  }
+
+  @media (min-width: 550px) {
+    width: 210px;
   }
 `;
 

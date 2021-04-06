@@ -1,14 +1,17 @@
-import { FinishButton } from '../Button/Button.style';
-import { ErrorMsg } from '../QuestionCard/CurrentQuestions.style';
-import styles from './QuestionHeader.module.css';
+import { FinishButton } from '../Button';
+import { ErrorMsg } from '../QuestionCard';
+import {
+  QuestionHeaderTitleStyle,
+  QuestionHeaderStyle,
+} from './QuestionHeader.style';
 
 function QuestionHeader({ sendAnswers, error }) {
   return (
-    <div className={styles.questionHeader}>
-      <h3 className={styles.questionHeaderTitle}>[ Testing theory_ ]</h3>
+    <QuestionHeaderStyle>
+      <QuestionHeaderTitleStyle>[ Testing theory_ ]</QuestionHeaderTitleStyle>
       {error && <ErrorMsg>{error}</ErrorMsg>}
       <FinishButton onClick={sendAnswers}>Finish test</FinishButton>
-    </div>
+    </QuestionHeaderStyle>
   );
 }
 
