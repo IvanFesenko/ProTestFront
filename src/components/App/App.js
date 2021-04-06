@@ -1,9 +1,10 @@
 import React, { lazy, Suspense, useEffect } from 'react';
 import { Route } from 'react-router-dom';
-import { Header, Footer, Main, Home } from 'components';
+import { Header, Footer, Main, Home,  Questions  } from 'components';
 import { AuthPage } from 'views';
 import { useDispatch, useSelector } from 'react-redux';
 import { authOperations } from '../../redux';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ function App() {
     <>
       <Header />
       <Main>
+        <Questions />
         <Route path="/">
           <Home />
         </Route>
@@ -32,6 +34,7 @@ function App() {
         <Route path="/register">
           <AuthPage auth={false} />
         </Route>
+
       </Main>
       <Footer />
     </>
