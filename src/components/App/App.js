@@ -1,6 +1,9 @@
+
 import { Route } from 'react-router-dom';
-import { Header, Footer, Main, Home, Questions  } from 'components';
-import { AuthPage } from 'views';
+import { Header, Footer, Main, Home,  Questions } from 'components';
+import { AuthPage, ContactsPage, UseFulPage} from 'views';
+
+
 
 function App() {
   return (
@@ -8,7 +11,8 @@ function App() {
       <Header />
       <Main>
 
-        <Route path="/">
+        <Questions />
+        <Route exact path="/">
           <Home />
         </Route>
         <Route path="/auth">
@@ -17,7 +21,12 @@ function App() {
         <Route path="/register">
           <AuthPage auth={false} />
         </Route>
-          <Questions />
+        <Route path="/contacts">
+          <ContactsPage />
+        </Route>
+        <Route path="/useful-info">
+          <UseFulPage />
+        </Route>
       </Main>
       <Footer />
     </>
