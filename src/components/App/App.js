@@ -10,6 +10,7 @@ function App() {
     <>
       <Header />
       <Main>
+
         <Questions />
         <Route exact path="/">
           <Home />
