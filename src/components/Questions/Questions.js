@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import QuestionCard from './QuestionCard';
 import QuestionHeader from './QuestionHeader';
 
-import { Button } from './Button/Button.style';
+import { Button } from './Button';
 import ArrowLeft from './Button/ArrowLeft';
 import ArrowRight from './Button/ArrowRight';
 

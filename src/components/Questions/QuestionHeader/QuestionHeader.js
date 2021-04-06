@@ -1,5 +1,5 @@
-import { FinishButton } from '../Button/Button.style';
-import { ErrorMsg } from '../QuestionCard/CurrentQuestions.style';
+import { FinishButton } from '../Button';
+import { ErrorMsg } from '../QuestionCard';
 import {
   QuestionHeaderTitleStyle,
   QuestionHeaderStyle,
