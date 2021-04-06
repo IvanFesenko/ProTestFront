@@ -1,10 +1,12 @@
 import styled from 'styled-components';
+import { errorColor } from 'assets/colors';
 
 const QuestionCardStyle = styled.div`
   background-color: white;
   padding: 40px 0px;
   margin-bottom: 20px;
-  border: ${({ error }) => (error ? `1px solid #ff4562` : `1px solid white`)};
+  border: ${({ error }) =>
+    error ? `1px solid ${errorColor}` : `1px solid white`};
   @media (min-width: 480px) {
     padding: 40px 20px;
   }
