@@ -1,12 +1,19 @@
 .OutTeam{
     text-align: center;
+    position: relative;
+    margin-bottom: 55px;
 }
 
-.hr{
-    opacity: 0.15;
-    border: 1px solid #00122F;
+.OutTeam::after{
+    content: '';
+
+    position: absolute;
     width: 322px;
-    margin: 22px auto 29px;
+    height: 1px;
+    background: #00122F;
+    top: calc(100% + 22px);
+    left: 50%;
+    transform: translate(-50%, 0);
 }
 
 .ContactsPageList{
