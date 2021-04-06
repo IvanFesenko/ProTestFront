@@ -1,0 +1,52 @@
+.useful{
+    display: flex;
+    align-items: center;
+    height: calc(100vh - 126px);
+    /* background-image: url('./../../assets/images/useful.png'); */
+}
+
+.useful > div{
+    width: 50%;
+}
+
+.useful h2{
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 30px;
+    position: relative;
+    margin-top: 24px;
+    margin-bottom: 55px;
+}
+
+.useful h2::after{
+    content: '';
+
+    position: absolute;
+    width: 322px;
+    height: 1px;
+    opacity: 0.15;
+    background: #00122F;
+    top: calc(100% + 22px);
+    left: 0;
+}
+
+.useful ul{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.useful ul li{
+    font-weight: 500;
+    margin-left: 60px;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.useful ul li a{
+    color:#000;
+}
+.useful ul li a span{
+    text-decoration: underline;
+    /* margin-left: 5px; */
+}
