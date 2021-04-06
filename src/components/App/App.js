@@ -1,7 +1,7 @@
 
 import { Route } from 'react-router-dom';
 import { Header, Footer, Main, Home } from 'components';
-import { AuthPage, ContactsPage } from 'views';
+import { AuthPage, ContactsPage, UseFulPage} from 'views';
 
 
 function App() {
@@ -20,6 +20,9 @@ function App() {
         </Route>
         <Route path="/contacts">
           <ContactsPage />
+        </Route>
+        <Route path="/useful-info">
+          <UseFulPage />
         </Route>
       </Main>
       <Footer />
