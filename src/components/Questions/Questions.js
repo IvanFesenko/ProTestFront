@@ -19,7 +19,7 @@ function Questions() {
     if (error) {
       setTimeout(() => {
         setError(null);
-      }, 5000);
+      }, 2000);
     }
   }, [error]);
 
