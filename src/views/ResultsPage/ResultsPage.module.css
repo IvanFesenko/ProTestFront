@@ -1,0 +1,28 @@
+
+.Results{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Results h3{
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.Results span{
+    margin-bottom: 70px;
+    position: relative;
+}
+
+.Results span::after{
+    content: '';
+    position: absolute;
+    width: 322px;
+    height: 1px;
+    opacity: 0.15;
+    background: #00122F;
+    top: calc(100% + 22px);
+    left: 50%;
+    transform: translate(-50%, 0);
+}
