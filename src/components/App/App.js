@@ -1,25 +1,9 @@
-import React, { lazy, Suspense, useEffect } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Route } from 'react-router-dom';
-import { Header, Footer, Main, Home,  Questions  } from 'components';
+import { Header, Footer, Main, Home, Questions } from 'components';
 import { AuthPage } from 'views';
-import { useDispatch, useSelector } from 'react-redux';
-import { authOperations } from '../../redux';
-
 
 function App() {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    console.log(
-      dispatch(
-        authOperations.logIn({
-          email: 'test@bk.com',
-          password: '123456',
-        }),
-      ),
-    );
-  }, [dispatch]);
-
   return (
     <>
       <Header />
@@ -34,7 +18,6 @@ function App() {
         <Route path="/register">
           <AuthPage auth={false} />
         </Route>
-
       </Main>
       <Footer />
     </>

@@ -13,8 +13,14 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 import authReducer from './auth/authSlice';
+import questionsReducer from './questions/questionsSlice';
 
-const middleware = [...getDefaultMiddleware(), logger];
+const middleware = [
+  ...getDefaultMiddleware({
+    serializableCheck: false,
+  }),
+  logger,
+];
 
 const authPersistConfig = {
   key: 'authToken',
@@ -25,7 +31,7 @@ const authPersistConfig = {
 const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    // phoneBook: phoneBookSlice,
+    questions: questionsReducer,
   },
   // eslint-disable-next-line no-process-env
   devTools: process.env.NODE_ENV === 'development',

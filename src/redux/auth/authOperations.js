@@ -1,28 +1,23 @@
-import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-
-axios.defaults.baseURL = 'http://localhost:5050';
-
-const token = {
-  set(tokenID) {
-    axios.defaults.headers.common.Authorization = `Bearer ${tokenID}`;
-  },
-  unset() {
-    axios.defaults.headers.common.Authorization = '';
-  },
-};
+import {
+  token,
+  authSingUp,
+  authLogIn,
+  authLogOut,
+  getUser,
+} from 'services/API';
 
 const logIn = createAsyncThunk(
   'auth/login',
   async (requestLoginData, { rejectWithValue }) => {
     try {
-      const response = await axios.post('/login', requestLoginData);
-      console.log('register  ', response.data);
+      const response = await authLogIn(requestLoginData);
+      console.log('logIn  ', response.data);
       token.set(response.data.token);
 
       return response.data;
     } catch (e) {
-      return rejectWithValue;
+      return rejectWithValue(e.message);
     }
   },
 );
@@ -31,11 +26,11 @@ const register = createAsyncThunk(
   'auth/register',
   async (requestDataRegister, { rejectWithValue }) => {
     try {
-      const response = await axios.post('/registration', requestDataRegister);
+      const response = await authSingUp(requestDataRegister);
 
       token.set(response.data.token);
     } catch (e) {
-      return rejectWithValue;
+      return rejectWithValue(e.message);
     }
   },
 );
@@ -44,10 +39,10 @@ const logOut = createAsyncThunk(
   'auth/logOut',
   async (_, { rejectWithValue }) => {
     try {
-      await axios.post('/logout');
+      await authLogOut();
       token.unset();
     } catch (e) {
-      return rejectWithValue;
+      return rejectWithValue(e.message);
     }
   },
 );
@@ -65,7 +60,7 @@ const getCurrentUser = createAsyncThunk(
     token.set(persistedToken);
 
     try {
-      const response = await axios.get('/currentUser');
+      const response = getUser();
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
