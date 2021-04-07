@@ -1,3 +1,4 @@
+import UserInfo from 'components/UserInfo';
 import Navigation, { List, Item, Link } from './Menu.style';
 
 const MENU_LINKS = [
@@ -15,6 +16,7 @@ const Menu = () => {
             <Link to={link.value}>{link.name}</Link>
           </Item>
         ))}
+        <UserInfo/>
       </List>
     </Navigation>
   );
