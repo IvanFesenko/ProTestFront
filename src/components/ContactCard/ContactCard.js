@@ -1,22 +1,32 @@
+import PropTypes from 'prop-types';
+import styles from './ContactCard.module.css';
 
-import styles from './ContactCard.module.css'
-import img from './../../assets/images/Rectangle_17.png'
-
-const ContactCard = () => {
+const ContactCard = ({img, title, position, description}) => {
     return (
-            <div className={styles.ContactsCardList}>
-                 <div className={styles.ContactsCard}>
-                    <img src={img} alt="name" />
-                    <div>
-                        <h5>Name</h5>
-                        <span>Front-End Developer </span>
-                        <p>
-                            Lorem Ipsum has been the standard "fish" for Latin texts since the early 16th century.
-                        </p>
-                    </div>
-                 </div>
+        <div className={styles.ContactsCardList}>
+            <div className={styles.ContactsCard}>
+                <img src={img} alt="name" />
+                <div>
+                    <h5>{title}</h5>
+                    <span>{position}</span>
+                    <p>{description}</p>
+                </div>
             </div>
+        </div>
     ) 
 }
 
+ContactCard.defaultProps = {
+    img:'',
+    title:'',
+    position:'',
+    description:''
+}
+
+ContactCard.propTypes = {
+    img:PropTypes.string.isRequired,
+    title:PropTypes.string.isRequired,
+    position:PropTypes.string.isRequired,
+    description:PropTypes.string.isRequired
+}
 export default ContactCard
