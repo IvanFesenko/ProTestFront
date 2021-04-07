@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { getTheoreticalTests, getTechnicalTests } from 'services/API';
-import nameTest from 'services/variables';
+import typeTest from 'services/variables';
 
 const getQuestions = createAsyncThunk(
   'question/get',
@@ -9,10 +9,10 @@ const getQuestions = createAsyncThunk(
     try {
       let response;
       switch (requestData) {
-        case nameTest.teh:
+        case typeTest.teh:
           response = await getTechnicalTests();
           break;
-        case nameTest.theor:
+        case typeTest.theor:
           response = await getTheoreticalTests();
           break;
 

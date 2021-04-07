@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { getQuestionsFromStore } from 'redux/questions/questionsSelector';
 import getQuestions from 'redux/questions/questionsOperatios';
-import nameTest from 'services/variables';
+import typeTest from 'services/variables';
 
 function Questions() {
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ function Questions() {
   }, [currentQuestionIndex, dispatch]);
 
   useEffect(() => {
-    dispatch(getQuestions(nameTest.teh));
+    dispatch(getQuestions(typeTest.teh));
   }, [dispatch]);
 
   useEffect(() => {
@@ -39,14 +39,6 @@ function Questions() {
 
   const sendAnswers = () => {
     const results = {};
-    // questions.forEach((question, index) => {
-    //   if (!question.userAnswer) {
-    //     setError('not all question get answer');
-    //     console.log('sendAnswers');
-    //     return;
-    //   }
-    //   results[question._id] = question.userAnswer;
-    // });
 
     for (let i = 0; i < questions.length; i++) {
       if (!questions[i].userAnswer) {
@@ -58,6 +50,7 @@ function Questions() {
     }
 
     console.log(Object.keys(results).length);
+
   };
 
   const nextQuestion = () => {

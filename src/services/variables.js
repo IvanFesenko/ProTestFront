@@ -1,6 +1,6 @@
-const nameTest = {
+const typeTest = {
   teh: 'technical',
   theor: 'theoretical',
 };
 
-export default nameTest;
+export default typeTest;

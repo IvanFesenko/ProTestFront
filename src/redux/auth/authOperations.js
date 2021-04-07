@@ -12,7 +12,6 @@ const logIn = createAsyncThunk(
   async (requestLoginData, { rejectWithValue }) => {
     try {
       const response = await authLogIn(requestLoginData);
-      console.log('logIn  ', response.data);
       token.set(response.data.token);
 
       return response.data;

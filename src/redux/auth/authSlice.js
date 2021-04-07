@@ -35,11 +35,9 @@ const userSlice = createSlice({
 });
 
 function setData(state, action) {
-  console.log('setData', action.payload);
   state.user = action.payload.user;
   state.token = action.payload.token;
   state.isAuth = true;
-  console.log(' after state ', state);
 }
 
 function unSetData(state) {
