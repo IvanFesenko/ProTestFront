@@ -4,6 +4,13 @@ import { mainBackground } from 'assets/colors';
 
 export const Wrapper = styled.div`
   background-color: ${mainBackground};
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size:cover;
+
+  @media (max-width: 900px) {
+    background-position: top center;
+  }
 `;
 
 export const Container = styled.div`
@@ -15,5 +22,8 @@ export const Container = styled.div`
   }
   @media (min-width: 900px) {
     max-width: 1070px;
+  }
+  @media (min-width: 1000px) {
+    max-width: 1280px;
   }
 `;
