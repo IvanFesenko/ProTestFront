@@ -9,10 +9,10 @@ const calculatePercent = (value, total) => {
 
 const getTotal = (data) => {
     var sum = 0;
-    for(var i=0; i<data.length; i++) {
-        sum += data[i].value;
-    }
-        
+    data.forEach(({value}) =>{
+        sum += value;
+    })
+          
     return sum;
 };
 
@@ -83,25 +83,6 @@ const ResultsChartPie = ({dataPoints}) => {
             context.rect(canvas.width - 200, rowLabel, 25, 25);
             context.fill();
 
-            // if(value !== 0){
-            //     context.fillStyle = 'transparent';
-            //     context.beginPath();
-            //     context.moveTo(canvas.width - 210, rowLabel+10);
-            //     context.lineTo(canvas.width - 260, rowLabel+10);
-            //     context.lineTo(labelX, labelY);
-            //     context.stroke();
-            //     context.fill();
-
-            //     context.fillStyle = '#fff';
-            //     context.beginPath();
-            //     context.arc(labelX, labelY, 5, 0, 2 * Math.PI);
-            //     context.fill();
-            // }
-
-            // context.font = "16px sans-serif";
-            // context.fillStyle = "#000";
-            // context.fillText( `${calculatePercent(value, total)}% ${label}`, canvas.width - 200 + 40, rowLabel+20);
-            
         }); 
 
 
