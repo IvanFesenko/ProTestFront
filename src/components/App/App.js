@@ -1,7 +1,7 @@
 
 import { Route } from 'react-router-dom';
 import { Header, Footer, Main, Home,  Questions } from 'components';
-import { AuthPage, ContactsPage, UseFulPage, ResultsPage} from 'views';
+import { AuthPage, ContactsPage, UseFulPage} from 'views';
 
 
 
@@ -11,7 +11,7 @@ function App() {
       <Header />
       <Main>
 
-        {/* <Questions /> */}
+        <Questions />
         <Route exact path="/">
           <Home />
         </Route>
@@ -27,9 +27,7 @@ function App() {
         <Route path="/useful-info">
           <UseFulPage />
         </Route>
-        <Route path="/results">
-          <ResultsPage />
-        </Route>
+   
       </Main>
       <Footer />
     </>
