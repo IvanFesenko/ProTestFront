@@ -6,13 +6,19 @@
 }
 
 .Results h3{
-    margin-top: 40px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .Results span{
     margin-bottom: 70px;
     position: relative;
+}
+
+.Results p{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
 }
 
 .Results span::after{
@@ -25,4 +31,51 @@
     top: calc(100% + 22px);
     left: 50%;
     transform: translate(-50%, 0);
+}
+
+.Results button{
+    width: 190px;
+    height: 48px;
+    text-align: center;
+    background: #FF6B09;
+    color: #fff;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+
+    margin: 50px 0;
+}
+
+.Results button:active{
+    background: #c7560b;
+}
+
+.Results img{
+
+}
+
+.correctFlex{
+    display: flex;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    width: 38%;
+    margin: 30px 0;
+}
+
+.correctFlex > div{
+    width: 50%;
+    text-align: center;
+    position: relative;
+}
+
+.correctFlex > div:first-child::after{
+    content: '';
+    opacity: 0.15;
+    background-color: #00122F;
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    top: 0;
+    right: 0;
 }
