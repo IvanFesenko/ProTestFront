@@ -1,5 +1,5 @@
 const typeTest = {
-  teсh: 'technical',
+  tech: 'technical',
   theor: 'theoretical',
 };
 

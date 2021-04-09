@@ -26,7 +26,7 @@ function Questions() {
   }, [currentQuestionIndex, dispatch]);
 
   useEffect(() => {
-    dispatch(getQuestions(typeTest.teh));
+    dispatch(getQuestions(typeTest.tech));
   }, [dispatch]);
 
   useEffect(() => {
@@ -50,7 +50,6 @@ function Questions() {
     }
 
     console.log(Object.keys(results).length);
-
   };
 
   const nextQuestion = () => {

@@ -9,7 +9,7 @@ const getQuestions = createAsyncThunk(
     try {
       let response;
       switch (requestData) {
-        case typeTest.teh:
+        case typeTest.tech:
           response = await getTechnicalTests();
           break;
         case typeTest.theor:
