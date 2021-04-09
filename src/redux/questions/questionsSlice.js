@@ -4,6 +4,7 @@ import getQuestions from './questionsOperatios';
 const initialState = {
   questions: [],
   currentQuestions: 0,
+  typeTest: null,
 };
 
 const questionsSlice = createSlice({
@@ -23,6 +24,10 @@ const questionsSlice = createSlice({
     },
     setCurrentQuestions: (state, action) => {
       state.currentQuestions = action.payload;
+    },
+
+    setTypeTest: (state, action) => {
+      state.typeTest = action.payload;
     },
   },
   extraReducers: {
