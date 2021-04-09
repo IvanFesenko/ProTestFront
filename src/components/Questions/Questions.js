@@ -8,7 +8,7 @@ import ArrowLeft from './Button/ArrowLeft';
 import ArrowRight from './Button/ArrowRight';
 
 import { QuestionsMain, QuestionNavigationButtons } from './Questions.style';
-import { setCurrentQuestions } from '../../redux/questions/questionsSlice';
+import { setCurrentQuestions } from 'redux/questions/questionsSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getQuestionsFromStore } from 'redux/questions/questionsSelector';
@@ -26,7 +26,7 @@ function Questions() {
   }, [currentQuestionIndex, dispatch]);
 
   useEffect(() => {
-    dispatch(getQuestions(typeTest.teh));
+    dispatch(getQuestions(typeTest.tech));
   }, [dispatch]);
 
   useEffect(() => {
@@ -50,7 +50,6 @@ function Questions() {
     }
 
     console.log(Object.keys(results).length);
-
   };
 
   const nextQuestion = () => {

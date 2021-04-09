@@ -1,6 +1,6 @@
 const typeTest = {
-  teсh: 'technical',
-  theor: 'theoretical',
+  tech: 'technical',
+  theor: 'theory',
 };
 
 export default typeTest;
