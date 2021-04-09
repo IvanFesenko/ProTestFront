@@ -1,11 +1,16 @@
 import axios from 'axios';
 
 const Axios = axios.create({
-  baseURL: 'http://localhost:5050',
+  baseURL: 'https://little-bitch.herokuapp.com',
 });
 
-export const setAuthToken = token => {
-  Axios.defaults.headers.common['Authorization'] = token;
+export const token = {
+  set(tokenID) {
+    Axios.defaults.headers.common.Authorization = `Bearer ${tokenID}`;
+  },
+  unset() {
+    Axios.defaults.headers.common.Authorization = '';
+  },
 };
 
 export const authSingUp = async userInfo => {
@@ -28,7 +33,7 @@ export const getTechnicalTests = async () => {
     const { data } = await Axios.get('/tests/technical');
     return data.requestBody;
   } catch (error) {
-    return [];
+    return error;
   }
 };
 
@@ -37,6 +42,15 @@ export const getTheoreticalTests = async () => {
     const { data } = await Axios.get('/tests/theoretical');
     return data.requestBody;
   } catch (error) {
-    return [];
+    return error;
+  }
+};
+
+export const getUser = async () => {
+  try {
+    // const response = await Axios.get('/currentUser');
+    // return response;
+  } catch (e) {
+    return e;
   }
 };
