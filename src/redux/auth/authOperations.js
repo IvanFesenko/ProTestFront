@@ -67,9 +67,11 @@ const getCurrentUser = createAsyncThunk(
   },
 );
 
-export default {
+const exports = {
   logIn,
   register,
   logOut,
   getCurrentUser,
 };
+
+export default exports;
