@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect } from 'react';
+import React from 'react';
 import { Route } from 'react-router-dom';
 import { Header, Footer, Main, Home, Questions } from 'components';
 import { AuthPage, ContactsPage, UseFulPage } from 'views';
@@ -7,8 +7,6 @@ import { getQuestionsName } from '../../redux/questions/questionsSelector';
 
 function App() {
   const typeTest = useSelector(getQuestionsName);
-
-  console.log(typeTest);
 
   return (
     <>

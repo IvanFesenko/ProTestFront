@@ -6,7 +6,6 @@ import {
 } from './QuestionHeader.style';
 
 function QuestionHeader({ sendAnswers, error, typeTest }) {
-  console.log(error);
   return (
     <QuestionHeaderStyle>
       <QuestionHeaderTitleStyle>
