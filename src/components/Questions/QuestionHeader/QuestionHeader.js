@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { FinishButton } from '../Button';
 import { ErrorMsg } from '../QuestionCard';
 import {
