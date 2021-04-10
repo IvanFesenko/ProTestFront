@@ -1,5 +1,5 @@
 
-import React, { lazy, Suspense } from 'react';
+import React from 'react'; //, { lazy, Suspense }
 import { Route } from 'react-router-dom';
 import { Header, Footer, Main, Home,  Questions } from 'components';
 import { AuthPage, ContactsPage, UseFulPage} from 'views';
