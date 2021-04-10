@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import { Header, Footer, Main, Home, Questions } from 'components';
 import { AuthPage, ContactsPage, UseFulPage } from 'views';
 import { useSelector } from 'react-redux';
-import { getQuestionsName } from '../../redux/questions/questionsSelector';
+import { getQuestionsName } from 'redux/questions/questionsSelector';
 
 function App() {
   const typeTest = useSelector(getQuestionsName);
@@ -29,6 +29,7 @@ function App() {
         <Route path="/useful-info">
           <UseFulPage />
         </Route>
+
       </Main>
       <Footer />
     </>
