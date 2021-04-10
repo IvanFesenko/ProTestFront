@@ -1,17 +1,20 @@
-
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import { Route } from 'react-router-dom';
-import { Header, Footer, Main, Home,  Questions } from 'components';
-import { AuthPage, ContactsPage, UseFulPage} from 'views';
-
+import { Header, Footer, Main, Home, Questions } from 'components';
+import { AuthPage, ContactsPage, UseFulPage } from 'views';
+import { useSelector } from 'react-redux';
+import { getQuestionsName } from '../../redux/questions/questionsSelector';
 
 function App() {
+  const typeTest = useSelector(getQuestionsName);
+
+  console.log(typeTest);
+
   return (
     <>
       <Header />
       <Main>
-
-        <Questions />
+        {typeTest && <Questions />}
         <Route exact path="/">
           <Home />
         </Route>
@@ -28,7 +31,6 @@ function App() {
         <Route path="/useful-info">
           <UseFulPage />
         </Route>
-
       </Main>
       <Footer />
     </>

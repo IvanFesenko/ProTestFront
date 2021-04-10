@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { setAnswer } from 'redux/questions/questionsSlice';
 import { FormControlLabel, makeStyles } from '@material-ui/core';
 
@@ -12,6 +12,8 @@ import {
   CurrentQuestions,
   CurrentQuestionsName,
 } from './CurrentQuestions.style';
+
+import ProgressBar from './ProgressBar/ProgressBar';
 import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles({
@@ -44,6 +46,10 @@ function QuestionCard({ currentQuestion, questions, error }) {
   const style = useStyles();
   return (
     <QuestionCardStyle error={error}>
+      <ProgressBar
+        lenght={questions.length}
+        currentPosition={currentQuestion}
+      />
       <CurrentQuestions>
         Question
         <span className={'currentQuestion-number'}>

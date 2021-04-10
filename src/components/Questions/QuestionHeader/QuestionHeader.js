@@ -4,12 +4,9 @@ import {
   QuestionHeaderTitleStyle,
   QuestionHeaderStyle,
 } from './QuestionHeader.style';
-import { useSelector } from 'react-redux';
-import { getQuestionsName } from 'redux/questions/questionsSelector';
 
-function QuestionHeader({ sendAnswers, error }) {
-  const typeTest = useSelector(getQuestionsName);
-
+function QuestionHeader({ sendAnswers, error, typeTest }) {
+  console.log(error);
   return (
     <QuestionHeaderStyle>
       <QuestionHeaderTitleStyle>

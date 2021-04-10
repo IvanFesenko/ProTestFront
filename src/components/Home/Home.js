@@ -6,8 +6,21 @@ import {
   QuoteAuthorInfo,
   TestLink,
 } from './Home.styles';
+import {
+  setTypeTest,
+  setCurrentQuestions,
+} from 'redux/questions/questionsSlice';
+import { useDispatch } from 'react-redux';
+import typeTest from 'services/variables';
 
 export const Home = () => {
+  const dispatch = useDispatch();
+
+  const setTest = typeTest => {
+    dispatch(setCurrentQuestions(0));
+    dispatch(setTypeTest(typeTest));
+  };
+
   return (
     <>
       <QuoteWrapper>
@@ -19,8 +32,12 @@ export const Home = () => {
         <QuoteAuthorInfo>Linux kernel creator, hacker, 1969</QuoteAuthorInfo>
       </QuoteWrapper>
       <ButtonsWrapper>
-        <TestLink to={'/'}>QA technical training</TestLink>
-        <TestLink to={'/'}>Testing theory</TestLink>
+        <TestLink onClick={() => setTest(typeTest.tech)} to={'/'}>
+          QA technical training
+        </TestLink>
+        <TestLink onClick={() => setTest(typeTest.theor)} to={'/'}>
+          Testing theory
+        </TestLink>
       </ButtonsWrapper>
     </>
   );

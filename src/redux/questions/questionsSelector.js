@@ -5,3 +5,7 @@ export const getQuestionsFromStore = state => {
 export const getQuestionsName = state => {
   return state.questions.typeTest;
 };
+
+export const getQuestionNumber = state => {
+  return state.questions.currentQuestion;
+};

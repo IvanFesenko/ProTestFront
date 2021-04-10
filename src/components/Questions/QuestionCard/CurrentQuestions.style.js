@@ -49,9 +49,10 @@ const ErrorMsg = styled.p`
   width: 100%;
   color: #ff4562;
   left: 50%;
-  bottom: -46px;
+  bottom: -52px;
   transform: translate(-50%);
   font-size: 13px;
+  z-index: 2;
   @media (min-width: 700px) {
     font-size: 18px;
   }
