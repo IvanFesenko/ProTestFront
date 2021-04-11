@@ -1,4 +1,4 @@
-import React from 'react'; //, { useEffect, useState }
+import React from 'react';
 import { setAnswer } from 'redux/questions/questionsSlice';
 import { FormControlLabel, makeStyles } from '@material-ui/core';
 
@@ -12,6 +12,8 @@ import {
   CurrentQuestions,
   CurrentQuestionsName,
 } from './CurrentQuestions.style';
+
+import ProgressBar from './ProgressBar/ProgressBar';
 import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles({
@@ -32,11 +34,11 @@ const useStyles = makeStyles({
 function QuestionCard({ currentQuestion, questions, error }) {
   const dispatch = useDispatch();
 
-  const setAnswers = answer => {
+  const setAnswers = e => {
     dispatch(
       setAnswer({
         ...questions[currentQuestion],
-        userAnswer: answer,
+        userAnswer: e.target.value,
       }),
     );
   };
@@ -44,6 +46,10 @@ function QuestionCard({ currentQuestion, questions, error }) {
   const style = useStyles();
   return (
     <QuestionCardStyle error={error}>
+      <ProgressBar
+        lenght={questions.length}
+        currentPosition={currentQuestion}
+      />
       <CurrentQuestions>
         Question
         <span className={'currentQuestion-number'}>
@@ -61,7 +67,7 @@ function QuestionCard({ currentQuestion, questions, error }) {
             <FormControlLabel
               checked={questions[currentQuestion].userAnswer === answer}
               value={answer}
-              control={<RadioOrange onChange={() => setAnswers(answer)} />}
+              control={<RadioOrange onChange={setAnswers} />}
               label={answer}
               className={style.test}
             />

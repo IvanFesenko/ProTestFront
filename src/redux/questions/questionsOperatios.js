@@ -1,6 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { getTheoreticalTests, getTechnicalTests } from 'services/API';
+import {
+  getTheoreticalTests,
+  getTechnicalTests,
+  sendAnswersTechnical,
+  sendAnswersTheoretical,
+} from 'services/API';
 import typeTest from 'services/variables';
 
 const getQuestions = createAsyncThunk(
@@ -19,6 +24,7 @@ const getQuestions = createAsyncThunk(
         default:
           console.log('хватит читерить');
       }
+
       return response;
     } catch (e) {
       return rejectedWithValue(e);
@@ -26,4 +32,27 @@ const getQuestions = createAsyncThunk(
   },
 );
 
-export default getQuestions;
+const sendAnswers = createAsyncThunk(
+  'questions/sendAnswer',
+  async ({ results: answerData, typeTest: type }, { rejectedWithValue }) => {
+    try {
+      let response;
+      switch (type) {
+        case typeTest.tech:
+          response = await sendAnswersTechnical(answerData);
+          break;
+        case typeTest.theor:
+          response = await sendAnswersTheoretical(answerData);
+          break;
+
+        default:
+          console.log('хватит читерить');
+      }
+      return response;
+    } catch (e) {
+      return rejectedWithValue(e);
+    }
+  },
+);
+
+export { getQuestions, sendAnswers };
