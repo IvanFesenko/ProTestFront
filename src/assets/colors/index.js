@@ -7,3 +7,5 @@ export const orange = '#FF6B09';
 export const subBlack = '#555555';
 
 export const errorColor = '#ff4562';
+
+export const greyLine = 'rgba(0, 18, 47, 0.15)';

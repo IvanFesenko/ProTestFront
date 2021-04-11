@@ -1,9 +1,9 @@
 import { useDispatch } from 'react-redux';
+import { SectionTitle } from 'components';
 
 import {
   ButtonsWrapper,
   QuoteWrapper,
-  Quote,
   QuoteAuthor,
   QuoteAuthorInfo,
   TestLink,
@@ -26,10 +26,10 @@ export const Home = () => {
   return (
     <>
       <QuoteWrapper>
-        <Quote>
+        <SectionTitle>
           “Regression testing. What is it? If the system compiles, that's good,
           if it boots, that's great!”
-        </Quote>
+        </SectionTitle>
         <QuoteAuthor>Linus Torvalds</QuoteAuthor>
         <QuoteAuthorInfo>Linux kernel creator, hacker, 1969</QuoteAuthorInfo>
       </QuoteWrapper>
