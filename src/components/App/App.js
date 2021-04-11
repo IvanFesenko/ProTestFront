@@ -1,3 +1,4 @@
+import React from 'react'; //, { lazy, Suspense }
 import { Route } from 'react-router-dom';
 import { Header, Footer, Main, Home, Questions } from 'components';
 import { AuthPage, ContactsPage, UseFulPage, ResultsPage } from 'views';
@@ -17,6 +18,7 @@ function App() {
         <Route path="/register">
           <AuthPage auth={false} />
         </Route>
+
         <Route path="/contacts">
           <ContactsPage />
         </Route>

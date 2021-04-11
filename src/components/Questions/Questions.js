@@ -8,12 +8,26 @@ import ArrowLeft from './Button/ArrowLeft';
 import ArrowRight from './Button/ArrowRight';
 
 import { QuestionsMain, QuestionNavigationButtons } from './Questions.style';
-import tempData from './tempData';
+import { setCurrentQuestions } from 'redux/questions/questionsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { getQuestionsFromStore } from 'redux/questions/questionsSelector';
+import getQuestions from 'redux/questions/questionsOperatios';
+import typeTest from 'services/variables';
 
 function Questions() {
+  const dispatch = useDispatch();
+  const questions = useSelector(getQuestionsFromStore);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [error, setError] = useState(null);
-  const keys = Object.keys(tempData);
+
+  useEffect(() => {
+    dispatch(setCurrentQuestions(currentQuestionIndex));
+  }, [currentQuestionIndex, dispatch]);
+
+  useEffect(() => {
+    dispatch(getQuestions(typeTest.tech));
+  }, [dispatch]);
 
   useEffect(() => {
     if (error) {
@@ -25,18 +39,21 @@ function Questions() {
 
   const sendAnswers = () => {
     const results = {};
-    for (const questionID in tempData) {
-      const question = tempData[questionID];
-      if (!question.userAnswer) {
+
+    for (let i = 0; i < questions.length; i++) {
+      if (!questions[i].userAnswer) {
         setError('not all question get answer');
+        console.log('sendAnswers');
         return;
       }
-      results[question.questionId] = question.userAnswer;
+      results[questions[i]._id] = questions[i].userAnswer;
     }
+
+    console.log(Object.keys(results).length);
   };
 
   const nextQuestion = () => {
-    if (currentQuestionIndex + 1 <= keys.length - 1) {
+    if (currentQuestionIndex + 1 <= questions.length - 1) {
       setCurrentQuestionIndex(prevState => prevState + 1);
     }
   };
@@ -47,24 +64,36 @@ function Questions() {
   };
 
   return (
-    <QuestionsMain>
-      <QuestionHeader sendAnswers={sendAnswers} error={error} />
-      <QuestionCard
-        currentQuestion={currentQuestionIndex}
-        questions={tempData}
-        error={error}
-      />
-      <QuestionNavigationButtons>
-        <Button onClick={prevQuestion}>
-          <ArrowLeft />
-          <span>Previous question</span>
-        </Button>
-        <Button onClick={nextQuestion}>
-          <span>Next question</span>
-          <ArrowRight />
-        </Button>
-      </QuestionNavigationButtons>
-    </QuestionsMain>
+    <>
+      {questions.length > 0 && (
+        <QuestionsMain>
+          <QuestionHeader sendAnswers={sendAnswers} error={error} />
+
+          <QuestionCard
+            currentQuestion={currentQuestionIndex}
+            questions={questions}
+            error={error}
+          />
+
+          <QuestionNavigationButtons>
+            <Button
+              onClick={prevQuestion}
+              disabled={currentQuestionIndex === 0 && true}
+            >
+              <ArrowLeft />
+              <span>Previous question</span>
+            </Button>
+            <Button
+              onClick={nextQuestion}
+              disabled={currentQuestionIndex === 11 && true}
+            >
+              <span>Next question</span>
+              <ArrowRight />
+            </Button>
+          </QuestionNavigationButtons>
+        </QuestionsMain>
+      )}
+    </>
   );
 }
 
