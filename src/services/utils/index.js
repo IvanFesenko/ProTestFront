@@ -1,5 +1,3 @@
 import UAParser from 'ua-parser-js';
 
-export const isMobileDevice = () => {
-  return UAParser().device.type === 'mobile';
-};
+export const isMobileDevice = UAParser().device.type === 'mobile';
