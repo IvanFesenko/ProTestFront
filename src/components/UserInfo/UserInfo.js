@@ -1,34 +1,37 @@
-import { useHistory } from 'react-router'
-import PropTypes from 'prop-types'
-import styles from './UserInfo.module.css'
+import { useHistory } from 'react-router';
+import PropTypes from 'prop-types';
 
-import avatar from './../../assets/images/avatar.png'
+import { authLogOut } from 'services/API';
 
-const UserInfo = ({avatar, name}) => {
+import styles from './UserInfo.module.css';
 
-    const history = useHistory();
+import avatar from './../../assets/images/avatar.png';
 
-    const onSignOut = () =>{
-        history.push('/auth')
-    }
+const UserInfo = ({ avatar, name }) => {
+  const history = useHistory();
 
-    return (
-        <div className={styles.userInfo}>
-            <img src={avatar}></img>
-            <b>{name}</b>
-            <i className={styles.signOut} onClick={()=>onSignOut()} ></i>
-        </div>
-    ) 
-}
+  const onSignOut = () => {
+    authLogOut();
+    history.push('/auth');
+  };
+
+  return (
+    <div className={styles.userInfo}>
+      <img src={avatar} alt="avatar" />
+      <b>{name}</b>
+      <i className={styles.signOut} onClick={onSignOut}></i>
+    </div>
+  );
+};
 
 UserInfo.defaultProps = {
-    avatar:avatar,
-    name:'Name',
-}
+  avatar: avatar,
+  name: 'Name',
+};
 
 UserInfo.propTypes = {
-    avatar:PropTypes.string.isRequired,
-    name:PropTypes.string.isRequired,
-}
+  avatar: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+};
 
-export default UserInfo
+export default UserInfo;

@@ -1,16 +1,12 @@
-
 import { Route } from 'react-router-dom';
-import { Header, Footer, Main, Home,  Questions } from 'components';
-import { AuthPage, ContactsPage, UseFulPage, ResultsPage} from 'views';
-
-
+import { Header, Footer, Main, Home, Questions } from 'components';
+import { AuthPage, ContactsPage, UseFulPage, ResultsPage } from 'views';
 
 function App() {
   return (
     <>
       <Header />
       <Main>
-
         {/* <Questions /> */}
         <Route exact path="/">
           <Home />
@@ -23,6 +19,9 @@ function App() {
         </Route>
         <Route path="/contacts">
           <ContactsPage />
+        </Route>
+        <Route path="/test">
+          <Questions />
         </Route>
         <Route path="/useful-info">
           <UseFulPage />
