@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 
-import { LogoutButton } from 'components';
 import { useScrollBlock } from 'hooks';
 import { Wrapper, List, Item, Burger } from './MobileMenu.style';
 
