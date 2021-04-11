@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { mainBackground, line } from 'assets/colors';
+import { mainBackground, greyLine } from 'assets/colors';
 
 export const Wrapper = styled.div`
   display: block;
@@ -23,7 +23,7 @@ export const Item = styled.li`
   margin-right: 0px;
   padding: 26px 0;
   text-align: center;
-  border-bottom: 1px solid ${line};
+  border-bottom: 1px solid ${greyLine};
 `;
 
 export const Burger = styled.button`

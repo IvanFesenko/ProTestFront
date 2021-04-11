@@ -8,4 +8,4 @@ export const subBlack = '#555555';
 
 export const errorColor = '#ff4562';
 
-export const line = 'rgba(0, 18, 47, 0.15)';
+export const greyLine = 'rgba(0, 18, 47, 0.15)';
