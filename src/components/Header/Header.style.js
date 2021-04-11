@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { mainBackground } from 'assets/colors'
+import { mainBackground, borderBottom} from 'assets/colors'
 
 export default styled.header`
   display: flex;
@@ -8,5 +8,5 @@ export default styled.header`
   padding: 20px;
   padding-right: 0;
   background-color: ${mainBackground};
-  border-bottom: 1px solid #ababab;
+  border-bottom: 1px solid ${borderBottom};
 `

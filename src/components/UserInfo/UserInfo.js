@@ -1,8 +1,7 @@
 import { useHistory } from 'react-router'
 import PropTypes from 'prop-types'
-import styles from './UserInfo.module.css'
 
-import avatar from './../../assets/images/avatar.png'
+import styles from './UserInfo.module.css'
 
 const UserInfo = ({avatar, name}) => {
 
@@ -14,7 +13,7 @@ const UserInfo = ({avatar, name}) => {
 
     return (
         <div className={styles.userInfo}>
-            <img src={avatar}></img>
+            <img src={avatar} alt='avatar'></img>
             <b>{name}</b>
             <i className={styles.signOut} onClick={()=>onSignOut()} ></i>
         </div>
@@ -22,7 +21,7 @@ const UserInfo = ({avatar, name}) => {
 }
 
 UserInfo.defaultProps = {
-    avatar:avatar,
+    avatar:'',
     name:'Name',
 }
 

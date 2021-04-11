@@ -7,8 +7,9 @@ const calculatePercent = (value, total) => {
     return (value / total * 100).toFixed(0);
 };
 
+
 const getTotal = (data) => {
-    var sum = 0;
+    let sum = 0;
     data.forEach(({value}) =>{
         sum += value;
     })
@@ -51,26 +52,21 @@ const ResultsChartPie = ({dataPoints}) => {
         const canvas = canvasRef.current
         const context = canvas.getContext('2d')
 
-        // Clear ALL
-        context.restore();
-        context.clearRect(0, 0, canvas.width, canvas.height);
-
-        var x = canvas.width / 2,
-            y = canvas.height / 2;
-        var startAngle,
+        const x = canvas.width / 2;
+        const y = canvas.height / 2;
+        let startAngle,
             endAngle,
             sliceAngle,
             total = getTotal(dataPoints);
 
-        // Sort
-        // dataPoints.sort((a, b) => (b.value - a.value) )
+        // Clear ALL
+        context.restore();
+        context.clearRect(0, 0, canvas.width, canvas.height);
 
         dataPoints.forEach(({label, value, color}, i) => {
             startAngle = calculateStart(dataPoints, i, total);
             endAngle = calculateEnd(dataPoints, i, total);
             sliceAngle = calculateSlice(value, total);
-
-            console.log({x, y, startAngle, endAngle});
 
             const rowLabel = 40*(i+1)
 

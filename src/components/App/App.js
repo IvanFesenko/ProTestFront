@@ -2,8 +2,12 @@
 import { Route } from 'react-router-dom';
 import { Header, Footer, Main, Home,  Questions } from 'components';
 import { AuthPage, ContactsPage, UseFulPage} from 'views';
+import ResultsChartPie from 'components/ResultsChartPie';
 
-
+const data = [
+  {label:'Correct ', value:67, color:'#FF6B01'},
+  {label:'Incorrect  ', value:20, color:'#D7D7D7'}
+]
 
 function App() {
   return (
@@ -11,7 +15,7 @@ function App() {
       <Header />
       <Main>
 
-        <Questions />
+        <ResultsChartPie dataPoints={data} />
         <Route exact path="/">
           <Home />
         </Route>
@@ -23,9 +27,6 @@ function App() {
         </Route>
         <Route path="/contacts">
           <ContactsPage />
-        </Route>
-        <Route path="/useful-info">
-          <UseFulPage />
         </Route>
    
       </Main>

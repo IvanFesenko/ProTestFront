@@ -1,6 +1,5 @@
 import UserInfo from 'components/UserInfo';
 import Navigation, { List, Item, Link } from './Menu.style';
-import avatar from './../../../assets/images/avatar.png'
 
 const MENU_LINKS = [
   { name: 'Home', value: '/' },
@@ -10,7 +9,7 @@ const MENU_LINKS = [
 
 const userInfo = {
   name:'Name Nick',
-  avatar:avatar
+  avatar:'https://cdn3.iconfinder.com/data/icons/business-avatar-1/512/3_avatar-512.png'
 }
 
 const Menu = () => {
@@ -22,7 +21,7 @@ const Menu = () => {
             <Link to={link.value}>{link.name}</Link>
           </Item>
         ))}
-        <UserInfo {...userInfo} />
+        <UserInfo name={userInfo.name} avatar={userInfo.avatar} />
       </List>
     </Navigation>
   );
