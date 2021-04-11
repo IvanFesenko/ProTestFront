@@ -1,43 +1,30 @@
-import { useState } from 'react';
-import { Drawer } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import CloseIcon from '@material-ui/icons/Close';
+import { isMobileDevice } from 'services/utils';
 
-import Navigation, { List, Item, Link, Burger } from './Menu.style';
+import { MobileMenu } from './MobileMenu';
+import Navigation, { List, Item, Link } from './Menu.style';
 
 const MENU_LINKS = [
-  { name: 'Home', value: '/' },
-  { name: 'Materials', value: '/materials' },
-  { name: 'Contacts', value: '/contacts' },
+  { name: 'Home', value: <Link to={'/'}>Home</Link> },
+  { name: 'Materials', value: <Link to={'/materials'}>Materials</Link> },
+  { name: 'Contacts', value: <Link to={'/contacts'}>Contacts</Link> },
 ];
 
+const mobileDevice = isMobileDevice();
+
 const Menu = () => {
-  const [menuIsOpen, setMenuIsOpen] = useState(false);
-
-  const menuToggle = () => {
-    setMenuIsOpen(prev => !prev);
-  };
-
   return (
     <Navigation>
-      <Burger>
-        {menuIsOpen ? (
-          <CloseIcon onClick={menuToggle} />
-        ) : (
-          <MenuIcon onClick={menuToggle} />
-        )}
-      </Burger>
+      {!mobileDevice ? (
+        <List>
+          {MENU_LINKS.map(link => (
+            <Item key={link.name}>{link.value}</Item>
+          ))}
+        </List>
+      ) : (
+        <MobileMenu list={MENU_LINKS} />
+      )}
     </Navigation>
   );
 };
-export default Menu;
 
-{
-  /* <List>
-        {MENU_LINKS.map(link => (
-          <Item key={link.name}>
-            <Link to={link.value}>{link.name}</Link>
-          </Item>
-        ))}
-      </List> */
-}
+export default Menu;

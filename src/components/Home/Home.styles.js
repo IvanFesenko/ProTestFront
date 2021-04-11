@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-import { orange, secondaryBackground } from 'assets/colors';
+import { orange, secondaryBackground, line } from 'assets/colors';
 
 export const QuoteWrapper = styled.div`
   padding: 30px 0 20px 0;
@@ -61,7 +61,7 @@ export const QuoteAuthor = styled.p`
     margin: 0 auto;
     width: 41%;
     height: 1px;
-    background-color: rgba(0, 18, 47, 0.15);
+    background-color: ${line};
     top: -20px;
     transform: translateY(-50%);
     position: relative;
