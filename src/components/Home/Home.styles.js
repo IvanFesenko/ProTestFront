@@ -31,23 +31,6 @@ export const ButtonsWrapper = styled.div`
   }
 `;
 
-export const Quote = styled.h2`
-  font-size: 12px;
-  text-align: center;
-  font-weight: 700;
-  line-height: 20px;
-  padding: 0 24px 40px 24px;
-  @media (min-width: 750px) {
-    font-size: 22px;
-    line-height: 20px;
-    font-weight: 700;
-  }
-  @media (min-width: 900px) {
-    line-height: 30px;
-    padding: 0 155px 40px 155px;
-  }
-`;
-
 export const QuoteAuthor = styled.p`
   font-size: 12px;
   text-align: center;
@@ -55,17 +38,6 @@ export const QuoteAuthor = styled.p`
   line-height: 14px;
   margin-bottom: 8px;
   padding-top: 20px;
-  ::before {
-    content: '';
-    display: block;
-    margin: 0 auto;
-    width: 41%;
-    height: 1px;
-    background-color: ${greyLine};
-    top: -20px;
-    transform: translateY(-50%);
-    position: relative;
-  }
   @media (min-width: 750px) {
     font-size: 18px;
     line-height: 36px;

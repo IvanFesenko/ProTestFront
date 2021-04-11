@@ -5,3 +5,5 @@ export { Footer } from './Footer';
 export { Home } from './Home';
 export { AuthForm } from './AuthForm';
 export { Questions } from './Questions';
+export { ContactCard } from './ContactCard';
+export { SectionTitle } from './SectionTitle';
