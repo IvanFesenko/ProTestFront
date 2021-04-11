@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
     "@material-ui/styles": "^4.11.3",
     "@reduxjs/toolkit": "^1.5.1",
     "@testing-library/jest-dom": "^5.11.4",
@@ -20,6 +21,7 @@
     "redux-persist": "^6.0.0",
     "reselect": "^4.0.0",
     "styled-components": "^5.2.3",
+    "ua-parser-js": "^0.7.28",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
