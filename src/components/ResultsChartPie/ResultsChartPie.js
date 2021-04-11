@@ -76,7 +76,6 @@ const ResultsChartPie = ({dataPoints}) => {
 
 
     useEffect(()=>{
-        console.log(screenSize);
         const {width:w} = screenSize
 
         if(400<=w && w <= 800){
