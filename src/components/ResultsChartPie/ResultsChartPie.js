@@ -1,12 +1,18 @@
-// import {CanvasJSChart} from 'canvasjs-react-charts'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
+
+const INITIAL_SCREEN_SIZE = {
+    width: undefined,
+    height: undefined,
+  }
+
+const INITIAL_CANVAS_WIDTH = 800
+const INITIAL_CANVAS_HEIDHT = 280
 
 const calculatePercent = (value, total) => {
         
     return (value / total * 100).toFixed(0);
 };
-
 
 const getTotal = (data) => {
     let sum = 0;
@@ -48,6 +54,44 @@ const calculateSlice = (value, total) =>{
 const ResultsChartPie = ({dataPoints}) => {
     const canvasRef = useRef(null)
 
+    const [canvasWidth, setCanvasWidth] =  useState(INITIAL_CANVAS_WIDTH)
+    const [canvasHeight, setCanvasHeight] = useState(INITIAL_CANVAS_HEIDHT)
+    const [screenSize, setScreenSize] = useState(INITIAL_SCREEN_SIZE);
+
+    useEffect(()=>{
+        const handleResize = evt =>{
+            setScreenSize({
+                width: window.screen.width,
+                height: window.screen.height,
+              })
+        }
+    
+        window.addEventListener("resize", handleResize);
+        handleResize()
+
+    return ()=>{
+        window.removeEventListener("resize", handleResize);
+    }
+    }, [])
+
+
+    useEffect(()=>{
+        console.log(screenSize);
+        const {width:w} = screenSize
+
+        if(400<=w && w <= 800){
+            setCanvasWidth(350)
+            setCanvasHeight(530)
+        }else if(w<=400){
+            setCanvasWidth(280)
+            setCanvasHeight(530)
+        }else{
+            setCanvasWidth(INITIAL_CANVAS_WIDTH)
+            setCanvasHeight(INITIAL_CANVAS_HEIDHT)
+        }
+ 
+    }, [screenSize])
+
     useEffect(() => {
         const canvas = canvasRef.current
         const context = canvas.getContext('2d')
@@ -73,10 +117,10 @@ const ResultsChartPie = ({dataPoints}) => {
             context.fillStyle = color;
             context.beginPath();
             context.moveTo(x, y);
-            context.arc(x, y, y, startAngle, endAngle, false);
+            context.arc(x, y, x<y? x : y, startAngle, endAngle, false);
             context.fill();
 
-            context.rect(canvas.width - 200, rowLabel, 25, 25);
+            context.rect(canvas.width - 200, rowLabel, 25, 25);//
             context.fill();
 
         }); 
@@ -97,15 +141,15 @@ const ResultsChartPie = ({dataPoints}) => {
             if(value !== 0){
                 context.fillStyle = 'transparent';
                 context.beginPath();
-                context.moveTo(canvas.width - 210, rowLabel+10);
-                context.lineTo(canvas.width - 260, rowLabel+10);
+                context.moveTo(canvas.width - 210, rowLabel+10);//
+                context.lineTo(canvas.width - 260, rowLabel+10); //
                 context.lineTo(labelX, labelY);
                 context.stroke();
                 context.fill();
 
                 context.fillStyle = '#fff';
                 context.beginPath();
-                context.arc(labelX, labelY, 5, 0, 2 * Math.PI);
+                context.arc(labelX, labelY, 5, 0, 2 * Math.PI);//
                 context.fill();
             }
 
@@ -115,12 +159,12 @@ const ResultsChartPie = ({dataPoints}) => {
             
         }); 
 
-    }, [dataPoints])
+    }, [dataPoints, screenSize])
+
+
 
     return (
-
-        <canvas ref={canvasRef} width="800" height="280" />
-        
+        <canvas ref={canvasRef} width={canvasWidth} height={canvasHeight} />   
     )
 }
 
