@@ -161,7 +161,6 @@ const ResultsChartPie = ({dataPoints}) => {
     }, [dataPoints, screenSize])
 
 
-
     return (
         <canvas ref={canvasRef} width={canvasWidth} height={canvasHeight} />   
     )
