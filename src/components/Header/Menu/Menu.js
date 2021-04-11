@@ -1,5 +1,5 @@
 import { isMobileDevice } from 'services/utils';
-import { UserInfo } from 'components';
+import { UserInfo, LogoutButton } from 'components';
 import { MobileMenu } from './MobileMenu';
 import Navigation, { List, Item, Link } from './Menu.style';
 import avatar from 'assets/images/avatar.png';
@@ -26,6 +26,7 @@ const Menu = () => {
             ))}
           </List>
           <UserInfo {...userInfo} />
+          <LogoutButton />
         </>
       ) : (
         <>
