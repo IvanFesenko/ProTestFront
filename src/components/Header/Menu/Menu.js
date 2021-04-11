@@ -31,7 +31,15 @@ const Menu = () => {
       ) : (
         <>
           <UserInfo {...userInfo} />
-          <MobileMenu list={MENU_LINKS} />
+          <MobileMenu
+            list={[
+              ...MENU_LINKS,
+              {
+                name: '',
+                value: <LogoutButton />,
+              },
+            ]}
+          />
         </>
       )}
     </Navigation>

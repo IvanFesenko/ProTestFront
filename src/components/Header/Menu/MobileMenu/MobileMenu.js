@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import MenuIcon from '@material-ui/icons/Menu';
 import CloseIcon from '@material-ui/icons/Close';
 
+import { LogoutButton } from 'components';
 import { useScrollBlock } from 'hooks';
 import { Wrapper, List, Item, Burger } from './MobileMenu.style';
 
@@ -27,13 +28,15 @@ const MobileMenu = ({ list }) => {
         )}
       </Burger>
       {isOpenMenu && (
-        <List>
-          {list.map(link => (
-            <Item key={link.name} onClick={menuToggle}>
-              {link.value}
-            </Item>
-          ))}
-        </List>
+        <>
+          <List>
+            {list.map(link => (
+              <Item key={link.name} onClick={menuToggle}>
+                {link.value}
+              </Item>
+            ))}
+          </List>
+        </>
       )}
     </Wrapper>
   );
