@@ -1,6 +1,6 @@
-import UserInfo from 'components/UserInfo';
+import { UserInfo } from 'components';
 import Navigation, { List, Item, Link } from './Menu.style';
-import avatar from './../../../assets/images/avatar.png'
+import avatar from 'assets/images/avatar.png';
 
 const MENU_LINKS = [
   { name: 'Home', value: '/' },
@@ -9,9 +9,9 @@ const MENU_LINKS = [
 ];
 
 const userInfo = {
-  name:'Name Nick',
-  avatar:avatar
-}
+  name: 'Username',
+  avatar: avatar,
+};
 
 const Menu = () => {
   return (

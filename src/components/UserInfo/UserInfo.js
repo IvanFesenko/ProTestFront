@@ -1,32 +1,14 @@
-import { useHistory } from 'react-router';
 import PropTypes from 'prop-types';
 
-import { authLogOut } from 'services/API';
-
-import styles from './UserInfo.module.css';
-
-import avatar from './../../assets/images/avatar.png';
+import { ProfileLink, Avatar, Name } from './UserInfo.style';
 
 const UserInfo = ({ avatar, name }) => {
-  const history = useHistory();
-
-  const onSignOut = () => {
-    authLogOut();
-    history.push('/auth');
-  };
-
   return (
-    <div className={styles.userInfo}>
-      <img src={avatar} alt="avatar" />
-      <b>{name}</b>
-      <i className={styles.signOut} onClick={onSignOut}></i>
-    </div>
+    <ProfileLink to={'/profile'}>
+      <Avatar src={avatar} alt={'avatar'} />
+      <Name>{name}</Name>
+    </ProfileLink>
   );
-};
-
-UserInfo.defaultProps = {
-  avatar: avatar,
-  name: 'Name',
 };
 
 UserInfo.propTypes = {
