@@ -1,12 +1,12 @@
 import PropTypes from 'prop-types';
-
+import { isMobileDevice } from 'services/utils';
 import { ProfileLink, Avatar, Name } from './UserInfo.style';
 
 const UserInfo = ({ avatar, name }) => {
   return (
     <ProfileLink to={'/profile'}>
       <Avatar src={avatar} alt={'avatar'} />
-      <Name>{name}</Name>
+      {!isMobileDevice ? <Name>{name}</Name> : null}
     </ProfileLink>
   );
 };

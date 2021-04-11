@@ -30,7 +30,6 @@ export const Link = styled(NavLink)`
   color: #000;
   text-decoration: none;
   :hover {
-    padding-bottom: 4px;
     border-bottom: 1px solid ${orange};
   }
 `;
