@@ -1,10 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import getQuestions from './questionsOperatios';
+import { getQuestions, sendAnswers } from './questionsOperatios';
 
 const initialState = {
   questions: [],
-  currentQuestions: 0,
+  currentQuestion: 0,
   typeTest: null,
+  result: null,
 };
 
 const questionsSlice = createSlice({
@@ -18,23 +19,41 @@ const questionsSlice = createSlice({
       // };
       //
       // state.questions = temp;
-      state.questions[state.currentQuestions] = {
+      state.questions[state.currentQuestion] = {
         ...action.payload,
       };
     },
     setCurrentQuestions: (state, action) => {
-      state.currentQuestions = action.payload;
+      state.currentQuestion = action.payload;
     },
 
     setTypeTest: (state, action) => {
+      resetStore(state);
       state.typeTest = action.payload;
+    },
+
+    resetTestData: (state, _) => {
+      resetStore(state);
     },
   },
   extraReducers: {
     [getQuestions.fulfilled](state, action) {
       state.questions = [...action.payload];
     },
+    [sendAnswers.fulfilled](state, action) {
+      state.result = action.payload;
+    },
   },
 });
-export const { setAnswer, setCurrentQuestions } = questionsSlice.actions;
+
+function resetStore(state) {
+  state.currentQuestion = 0;
+  state.questions = [];
+  state.typeTest = null;
+}
+export const {
+  setAnswer,
+  setCurrentQuestions,
+  setTypeTest,
+} = questionsSlice.actions;
 export default questionsSlice.reducer;

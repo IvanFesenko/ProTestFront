@@ -1,15 +1,13 @@
+import React from 'react';
+
 import { FinishButton } from '../Button';
 import { ErrorMsg } from '../QuestionCard';
 import {
   QuestionHeaderTitleStyle,
   QuestionHeaderStyle,
 } from './QuestionHeader.style';
-import { useSelector } from 'react-redux';
-import { getQuestionsName } from 'redux/questions/questionsSelector';
 
-function QuestionHeader({ sendAnswers, error }) {
-  const typeTest = useSelector(getQuestionsName);
-
+function QuestionHeader({ sendAnswers, error, typeTest }) {
   return (
     <QuestionHeaderStyle>
       <QuestionHeaderTitleStyle>

@@ -46,6 +46,24 @@ export const getTheoreticalTests = async () => {
   }
 };
 
+export const sendAnswersTechnical = async answerData => {
+  try {
+    const { data } = await Axios.post('/tests/technical', answerData);
+    return data.requestBody;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const sendAnswersTheoretical = async answerData => {
+  try {
+    const { data } = await Axios.post('/tests/theoretical', answerData);
+    return data.requestBody;
+  } catch (error) {
+    return error;
+  }
+};
+
 export const getUser = async () => {
   try {
     // const response = await Axios.get('/currentUser');
