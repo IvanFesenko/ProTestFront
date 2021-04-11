@@ -9,12 +9,10 @@ const MENU_LINKS = [
   { name: 'Contacts', value: <Link to={'/contacts'}>Contacts</Link> },
 ];
 
-const mobileDevice = isMobileDevice();
-
 const Menu = () => {
   return (
     <Navigation>
-      {!mobileDevice ? (
+      {!isMobileDevice ? (
         <List>
           {MENU_LINKS.map(link => (
             <Item key={link.name}>{link.value}</Item>
