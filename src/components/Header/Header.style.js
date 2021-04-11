@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { mainBackground, borderBottom} from 'assets/colors'
+import { mainBackground, greyLine } from 'assets/colors';
 
 export default styled.header`
   display: flex;
@@ -8,5 +8,6 @@ export default styled.header`
   padding: 20px;
   padding-right: 0;
   background-color: ${mainBackground};
-  border-bottom: 1px solid ${borderBottom};
-`
+  border: 1px solid ${greyLine};
+  position: relative;
+`;

@@ -8,63 +8,95 @@ import ArrowLeft from './Button/ArrowLeft';
 import ArrowRight from './Button/ArrowRight';
 
 import { QuestionsMain, QuestionNavigationButtons } from './Questions.style';
-import tempData from './tempData';
+import { setCurrentQuestions } from 'redux/questions/questionsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+
+import {
+  getQuestionsFromStore,
+  getQuestionsName,
+  getQuestionNumber,
+} from 'redux/questions/questionsSelector';
+import { getQuestions, sendAnswers } from 'redux/questions/questionsOperatios';
 
 function Questions() {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const dispatch = useDispatch();
+  const typeTest = useSelector(getQuestionsName);
+  const questions = useSelector(getQuestionsFromStore);
+  const currentQuestionIndex = useSelector(getQuestionNumber);
+
   const [error, setError] = useState(null);
-  const keys = Object.keys(tempData);
+
+  useEffect(() => {
+    if (questions.length === 0) {
+      dispatch(getQuestions(typeTest));
+    }
+  }, [dispatch, typeTest, questions]);
 
   useEffect(() => {
     if (error) {
       setTimeout(() => {
         setError(null);
-      }, 2000);
+      }, 3000);
     }
   }, [error]);
 
-  const sendAnswers = () => {
-    const results = {};
-    for (const questionID in tempData) {
-      const question = tempData[questionID];
-      if (!question.userAnswer) {
+  const sendResponse = () => {
+    let results = {};
+
+    for (let i = 0; i < questions.length; i++) {
+      if (!questions[i].userAnswer) {
+        console.log('sendAnswers');
+        results = null;
         setError('not all question get answer');
         return;
       }
-      results[question.questionId] = question.userAnswer;
+      results[questions[i]._id] = questions[i].userAnswer;
     }
+    dispatch(sendAnswers({ results, typeTest }));
   };
 
   const nextQuestion = () => {
-    if (currentQuestionIndex + 1 <= keys.length - 1) {
-      setCurrentQuestionIndex(prevState => prevState + 1);
-    }
+    dispatch(setCurrentQuestions(currentQuestionIndex + 1));
   };
   const prevQuestion = () => {
-    if (currentQuestionIndex - 1 >= 0) {
-      setCurrentQuestionIndex(prevState => prevState - 1);
-    }
+    dispatch(setCurrentQuestions(currentQuestionIndex - 1));
   };
 
   return (
-    <QuestionsMain>
-      <QuestionHeader sendAnswers={sendAnswers} error={error} />
-      <QuestionCard
-        currentQuestion={currentQuestionIndex}
-        questions={tempData}
-        error={error}
-      />
-      <QuestionNavigationButtons>
-        <Button onClick={prevQuestion}>
-          <ArrowLeft />
-          <span>Previous question</span>
-        </Button>
-        <Button onClick={nextQuestion}>
-          <span>Next question</span>
-          <ArrowRight />
-        </Button>
-      </QuestionNavigationButtons>
-    </QuestionsMain>
+    <>
+      {questions.length > 0 && (
+        <QuestionsMain>
+          <QuestionHeader
+            sendAnswers={sendResponse}
+            error={error}
+            typeTest={typeTest}
+          />
+
+          <QuestionCard
+            currentQuestion={currentQuestionIndex}
+            questions={questions}
+            error={error}
+          />
+
+          <QuestionNavigationButtons>
+            <Button
+              onClick={prevQuestion}
+              disabled={currentQuestionIndex === 0}
+            >
+              <ArrowLeft />
+              <span>Previous question</span>
+            </Button>
+            <Button
+              onClick={nextQuestion}
+              disabled={currentQuestionIndex === questions.length - 1}
+            >
+              <span>Next question</span>
+              <ArrowRight />
+            </Button>
+          </QuestionNavigationButtons>
+        </QuestionsMain>
+      )}
+    </>
   );
 }
 

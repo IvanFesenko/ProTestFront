@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-
+import React from 'react';
+import { setAnswer } from 'redux/questions/questionsSlice';
 import { FormControlLabel, makeStyles } from '@material-ui/core';
 
 import RadioOrange from './Radiostyles';
@@ -12,6 +12,9 @@ import {
   CurrentQuestions,
   CurrentQuestionsName,
 } from './CurrentQuestions.style';
+
+import ProgressBar from './ProgressBar/ProgressBar';
+import { useDispatch } from 'react-redux';
 
 const useStyles = makeStyles({
   test: {
@@ -29,25 +32,24 @@ const useStyles = makeStyles({
 });
 
 function QuestionCard({ currentQuestion, questions, error }) {
-  const [indexCheckedAnswer, setIndexCheckedAnswer] = useState(null);
+  const dispatch = useDispatch();
 
-  const setAnswer = answer => {
-    questions[currentQuestion] = {
-      ...questions[currentQuestion],
-      userAnswer: answer,
-    };
-    setIndexCheckedAnswer(answer);
+  const setAnswers = e => {
+    dispatch(
+      setAnswer({
+        ...questions[currentQuestion],
+        userAnswer: e.target.value,
+      }),
+    );
   };
-
-  useEffect(() => {
-    if (indexCheckedAnswer) {
-      setIndexCheckedAnswer(null);
-    }
-  }, [indexCheckedAnswer]);
 
   const style = useStyles();
   return (
     <QuestionCardStyle error={error}>
+      <ProgressBar
+        lenght={questions.length}
+        currentPosition={currentQuestion}
+      />
       <CurrentQuestions>
         Question
         <span className={'currentQuestion-number'}>
@@ -65,7 +67,7 @@ function QuestionCard({ currentQuestion, questions, error }) {
             <FormControlLabel
               checked={questions[currentQuestion].userAnswer === answer}
               value={answer}
-              control={<RadioOrange onChange={() => setAnswer(answer)} />}
+              control={<RadioOrange onChange={setAnswers} />}
               label={answer}
               className={style.test}
             />

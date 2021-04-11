@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { orange } from 'assets/colors';
+import { orange, subBlack } from 'assets/colors';
 
 const Button = styled.button`
   border: none;
@@ -18,13 +18,20 @@ const Button = styled.button`
   span {
     display: none;
   }
+  svg path {
+    transition: 0.3s;
+  }
   :hover {
     background-color: ${orange};
-    color: white;
+    color: ${({ disabled }) => (disabled ? `black` : `white`)};
   }
   :hover svg path {
-    fill: white;
+    fill: ${({ disabled }) => (disabled ? `black` : `white`)};
   }
+  :disabled {
+    background-color: ${subBlack};
+  }
+
   @media (min-width: 480px) {
     width: 180px;
     span {

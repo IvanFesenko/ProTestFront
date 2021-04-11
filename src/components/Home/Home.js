@@ -1,26 +1,45 @@
+import { useDispatch } from 'react-redux';
+import { SectionTitle } from 'components';
+
 import {
   ButtonsWrapper,
   QuoteWrapper,
-  Quote,
   QuoteAuthor,
   QuoteAuthorInfo,
   TestLink,
 } from './Home.styles';
+import {
+  setTypeTest,
+  setCurrentQuestions,
+} from 'redux/questions/questionsSlice';
+
+import typeTest from 'services/variables';
 
 export const Home = () => {
+  const dispatch = useDispatch();
+
+  const setTest = typeTest => {
+    dispatch(setCurrentQuestions(0));
+    dispatch(setTypeTest(typeTest));
+  };
+
   return (
     <>
       <QuoteWrapper>
-        <Quote>
+        <SectionTitle>
           “Regression testing. What is it? If the system compiles, that's good,
           if it boots, that's great!”
-        </Quote>
+        </SectionTitle>
         <QuoteAuthor>Linus Torvalds</QuoteAuthor>
         <QuoteAuthorInfo>Linux kernel creator, hacker, 1969</QuoteAuthorInfo>
       </QuoteWrapper>
       <ButtonsWrapper>
-        <TestLink to={'/'}>QA technical training</TestLink>
-        <TestLink to={'/'}>Testing theory</TestLink>
+        <TestLink onClick={() => setTest(typeTest.tech)} to={'/'}>
+          QA technical training
+        </TestLink>
+        <TestLink onClick={() => setTest(typeTest.theor)} to={'/'}>
+          Testing theory
+        </TestLink>
       </ButtonsWrapper>
     </>
   );
