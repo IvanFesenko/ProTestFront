@@ -27,8 +27,10 @@ function Questions() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    dispatch(getQuestions(typeTest));
-  }, [dispatch, typeTest]);
+    if (questions.length === 0) {
+      dispatch(getQuestions(typeTest));
+    }
+  }, [dispatch, typeTest, questions]);
 
   useEffect(() => {
     if (error) {
@@ -54,14 +56,10 @@ function Questions() {
   };
 
   const nextQuestion = () => {
-    if (currentQuestionIndex + 1 <= questions.length - 1) {
-      dispatch(setCurrentQuestions(currentQuestionIndex + 1));
-    }
+    dispatch(setCurrentQuestions(currentQuestionIndex + 1));
   };
   const prevQuestion = () => {
-    if (currentQuestionIndex - 1 >= 0) {
-      dispatch(setCurrentQuestions(currentQuestionIndex - 1));
-    }
+    dispatch(setCurrentQuestions(currentQuestionIndex - 1));
   };
 
   return (
@@ -83,14 +81,14 @@ function Questions() {
           <QuestionNavigationButtons>
             <Button
               onClick={prevQuestion}
-              disabled={currentQuestionIndex === 0 && true}
+              disabled={currentQuestionIndex === 0}
             >
               <ArrowLeft />
               <span>Previous question</span>
             </Button>
             <Button
               onClick={nextQuestion}
-              disabled={currentQuestionIndex === 11 && true}
+              disabled={currentQuestionIndex === questions.length - 1}
             >
               <span>Next question</span>
               <ArrowRight />

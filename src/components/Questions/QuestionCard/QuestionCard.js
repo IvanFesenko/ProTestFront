@@ -34,11 +34,11 @@ const useStyles = makeStyles({
 function QuestionCard({ currentQuestion, questions, error }) {
   const dispatch = useDispatch();
 
-  const setAnswers = answer => {
+  const setAnswers = e => {
     dispatch(
       setAnswer({
         ...questions[currentQuestion],
-        userAnswer: answer,
+        userAnswer: e.target.value,
       }),
     );
   };
@@ -67,7 +67,7 @@ function QuestionCard({ currentQuestion, questions, error }) {
             <FormControlLabel
               checked={questions[currentQuestion].userAnswer === answer}
               value={answer}
-              control={<RadioOrange onChange={() => setAnswers(answer)} />}
+              control={<RadioOrange onChange={setAnswers} />}
               label={answer}
               className={style.test}
             />

@@ -1,3 +1,5 @@
+import { useDispatch } from 'react-redux';
+
 import {
   ButtonsWrapper,
   QuoteWrapper,
@@ -10,7 +12,7 @@ import {
   setTypeTest,
   setCurrentQuestions,
 } from 'redux/questions/questionsSlice';
-import { useDispatch } from 'react-redux';
+
 import typeTest from 'services/variables';
 
 export const Home = () => {

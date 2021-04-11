@@ -11,7 +11,6 @@ import typeTest from 'services/variables';
 const getQuestions = createAsyncThunk(
   'question/get',
   async (requestData, { rejectedWithValue }) => {
-    console.log('requestData ', requestData);
     try {
       let response;
       switch (requestData) {
@@ -25,7 +24,7 @@ const getQuestions = createAsyncThunk(
         default:
           console.log('хватит читерить');
       }
-      console.log(response);
+
       return response;
     } catch (e) {
       return rejectedWithValue(e);
@@ -36,8 +35,6 @@ const getQuestions = createAsyncThunk(
 const sendAnswers = createAsyncThunk(
   'questions/sendAnswer',
   async ({ results: answerData, typeTest: type }, { rejectedWithValue }) => {
-    console.log('requestData ', answerData);
-    console.log('requestData ', type);
     try {
       let response;
       switch (type) {
@@ -51,7 +48,6 @@ const sendAnswers = createAsyncThunk(
         default:
           console.log('хватит читерить');
       }
-      console.log(response);
       return response;
     } catch (e) {
       return rejectedWithValue(e);

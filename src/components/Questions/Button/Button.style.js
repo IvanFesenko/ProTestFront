@@ -18,6 +18,9 @@ const Button = styled.button`
   span {
     display: none;
   }
+  svg path {
+    transition: 0.3s;
+  }
   :hover {
     background-color: ${orange};
     color: ${({ disabled }) => (disabled ? `black` : `white`)};
