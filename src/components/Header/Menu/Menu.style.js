@@ -16,14 +16,19 @@ export const List = styled.ul`
 `;
 
 export const Item = styled.li`
-  margin-right: 85px;
   display: flex;
   align-items: center;
+  @media (min-width: 750px) {
+    margin-right: 56px;
+  }
+  @media (min-width: 900px) {
+    margin-right: 85px;
+  }
 `;
 
 export const Link = styled(NavLink)`
   font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
   line-height: 16px;
   text-align: center;
@@ -31,5 +36,8 @@ export const Link = styled(NavLink)`
   text-decoration: none;
   :hover {
     border-bottom: 1px solid ${orange};
+  }
+  @media (min-width: 750px) {
+    font-size: 14px;
   }
 `;

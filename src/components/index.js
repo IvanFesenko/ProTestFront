@@ -9,3 +9,4 @@ export { ContactCard } from './ContactCard';
 export { SectionTitle } from './SectionTitle';
 export { LogoutButton } from './LogoutButton';
 export { UserInfo } from './UserInfo';
+export { ResultsChartPie } from './ResultsChartPie';
