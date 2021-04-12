@@ -76,9 +76,9 @@ const data = [
     description:
       'Lorem Ipsum has been the standard "fish" for Latin texts since the early 16th century.',
     social: {
-      linkedin: '#',
-      github: '#',
-      telegram: '#',
+      linkedin: 'https://www.linkedin.com/in/yaroslav-paltsun-6553421a8/',
+      github: 'https://github.com/yaarchee',
+      telegram: 'https://t.me/yaarchee',
     },
     location: 'Dnepr',
   },
