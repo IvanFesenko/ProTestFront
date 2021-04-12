@@ -1,0 +1,42 @@
+
+.userInfo{
+    display: flex;
+    align-items: center;
+}
+
+.userInfo b{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    color: #000000;
+}
+
+.userInfo img{
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+    margin-right: 30px;
+}
+
+.signOut{
+    background-image: url('./../../assets/images/sign-out.svg');
+    background-repeat: no-repeat;
+    display: block;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    margin: 0 20px 0 40px;
+    cursor: pointer;
+}
+
+.signOut::before{
+    content: '';
+    position: absolute;
+    top: -26px;
+    left: 0;
+    width: 1px;
+    height: 69px;
+    background-color: #ababab;
+    margin-left: -20px;
+}

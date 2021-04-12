@@ -1,5 +1,5 @@
-import { SectionTitle } from 'components';
 import { useDispatch } from 'react-redux';
+import { SectionTitle } from 'components';
 
 import {
   ButtonsWrapper,
