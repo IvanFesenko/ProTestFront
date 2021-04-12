@@ -29,7 +29,6 @@ function App() {
         <Route path="/useful-info">
           <UseFulPage />
         </Route>
-
       </Main>
       <Footer />
     </>
