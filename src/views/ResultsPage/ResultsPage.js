@@ -1,6 +1,6 @@
 import styles from './ResultsPage.module.css';
 import cat from 'assets/images/cat.png';
-import ResultsChartPie from 'components/ResultsChartPie';
+//import ResultsChartPie from 'components/ResultsChartPie';
 import { useHistory } from 'react-router';
 
 const INITIAL_STATE_RESULTS = {
@@ -25,7 +25,7 @@ const ResultsPage = () => {
       <h3>Results</h3>
       <span>[ Testing theory_]</span>
 
-      <ResultsChartPie dataPoints={INITIAL_STATE_CHART} />
+      {/* <ResultsChartPie dataPoints={INITIAL_STATE_CHART} /> */}
 
       <div className={styles.correctFlex}>
         <div>
