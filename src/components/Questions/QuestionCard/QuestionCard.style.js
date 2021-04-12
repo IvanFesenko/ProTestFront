@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { errorColor } from 'assets/colors';
 
 const QuestionCardStyle = styled.div`
+  position: relative;
   background-color: white;
   padding: 40px 0px;
   margin-bottom: 20px;
