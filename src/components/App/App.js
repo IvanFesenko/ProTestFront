@@ -44,6 +44,9 @@ function App() {
           <ResultsPage />
         </Route>
 
+        <Route path="/profile">
+          <PersonalSettings />
+        </Route>
       </Main>
       <Footer />
     </>

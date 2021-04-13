@@ -7,9 +7,15 @@ import {
   Field,
   SignBlock,
   SignButton,
-  Text,
 } from 'components/AuthForm/AuthForm.style';
-import { Form, ErrorMsg } from './Form.style';
+import {
+  Form,
+  ErrorMsg,
+  FormWrapper,
+  FormHeader,
+  TextHeader,
+} from './Form.style';
+import ShowPasswordToggle from './ShowPasswordToggle';
 
 const useStylesLoader = makeStyles({
   loader: {
@@ -22,6 +28,7 @@ function ChangePasswordForm() {
   const styleLoader = useStylesLoader();
   const [oldPassword, setSldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState('');
   const [sending, setSending] = useState(false);
   const [error, setError] = useState(null);
@@ -31,7 +38,7 @@ function ChangePasswordForm() {
     if (error) {
       showError = setTimeout(() => {
         setError(false);
-      }, 150000);
+      }, 3000);
     }
 
     return () => {
@@ -66,51 +73,60 @@ function ChangePasswordForm() {
   };
 
   return (
-    <Form onSubmit={handleSubmit} autoComplete="off">
-      <Text>Change your password:</Text>
-      <Field
-        className={classes.root}
-        label="Old Password"
-        variant="outlined"
-        type="text"
-        name="oP"
-        required
-        value={oldPassword}
-        onChange={handleChange}
-      />
-      <Field
-        className={classes.root}
-        label="New Password"
-        variant="outlined"
-        type="text"
-        name="nP"
-        required
-        value={newPassword}
-        onChange={handleChange}
-      />
-      <Field
-        className={classes.root}
-        label="Confirm new password"
-        variant="outlined"
-        type="text"
-        name="cNp"
-        required
-        value={confirmPassword}
-        onChange={handleChange}
-      />
+    <FormWrapper>
+      <Form onSubmit={handleSubmit} autoComplete="off">
+        <FormHeader>
+          <TextHeader>Change your password:</TextHeader>
+          <ShowPasswordToggle
+            showPassword={showPassword}
+            handleShowPassword={setShowPassword}
+          />
+        </FormHeader>
 
-      {error && <ErrorMsg error={error}>{error}</ErrorMsg>}
+        <Field
+          className={classes.root}
+          label="Old Password"
+          variant="outlined"
+          type={showPassword ? 'text' : 'password'}
+          name="oP"
+          required
+          value={oldPassword}
+          onChange={handleChange}
+        />
+        <Field
+          className={classes.root}
+          label="New Password"
+          variant="outlined"
+          type={showPassword ? 'text' : 'password'}
+          name="nP"
+          required
+          value={newPassword}
+          onChange={handleChange}
+        />
+        <Field
+          className={classes.root}
+          label="Confirm new password"
+          variant="outlined"
+          type={showPassword ? 'text' : 'password'}
+          name="cNp"
+          required
+          value={confirmPassword}
+          onChange={handleChange}
+        />
 
-      <SignBlock>
-        <SignButton type="submit" sending={sending} disabled={sending}>
-          {sending ? (
-            <CircularProgress className={styleLoader.loader} />
-          ) : (
-            'Submit'
-          )}
-        </SignButton>
-      </SignBlock>
-    </Form>
+        {error && <ErrorMsg error={error}>{error}</ErrorMsg>}
+
+        <SignBlock>
+          <SignButton type="submit" sending={sending} disabled={sending}>
+            {sending ? (
+              <CircularProgress className={styleLoader.loader} />
+            ) : (
+              'Submit'
+            )}
+          </SignButton>
+        </SignBlock>
+      </Form>
+    </FormWrapper>
   );
 }
 

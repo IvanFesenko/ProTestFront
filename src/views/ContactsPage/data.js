@@ -66,7 +66,7 @@ const data = [
     name: 'Yaroslav Paltsun',
     position: 'Front-End Developer',
     social: {
-      linkedin: 'https://www.linkedin.com/in/yaroslav-paltsun-6553421a8/',
+      linkedin: 'https://www.linkedin.com/in/yarchee/',
       github: 'https://github.com/yaarchee',
       telegram: 'https://t.me/yaarchee',
     },

@@ -1,6 +1,24 @@
 import styled from 'styled-components';
 import { errorColor } from 'assets/colors';
 
+const FormWrapper = styled.div`
+  padding: 30px 0 30px 0;
+
+  @media (min-width: 768px) {
+    padding: 80px 0 256px 0;
+  }
+`;
+
+const FormHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const TextHeader = styled.p`
+  font-weight: 500;
+`;
+
 const Form = styled.form`
   position: relative;
   padding: 30px 20px;
@@ -35,4 +53,4 @@ const ErrorMsg = styled.p`
   }
 `;
 
-export { Form, ErrorMsg };
+export { Form, ErrorMsg, FormWrapper, FormHeader, TextHeader };
