@@ -1,16 +1,5 @@
 import { useEffect, useRef } from 'react';
-
-import { isMobileDevice, isTabletDevice } from 'services/utils';
-
-const useCanvasSize = () => {
-  if (isMobileDevice) {
-    return { canvasWidth: 280, canvasHeight: 530 };
-  }
-  if (isTabletDevice) {
-    return { canvasWidth: 350, canvasHeight: 530 };
-  }
-  return { canvasWidth: 800, canvasHeight: 280 };
-};
+import { useCanvasSize } from 'hooks';
 
 const calculatePercent = (value, total) => {
   return ((value / total) * 100).toFixed(0);

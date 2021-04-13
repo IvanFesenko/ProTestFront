@@ -1,33 +1,19 @@
-import { useHistory } from 'react-router'
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import { isMobileDevice } from 'services/utils';
+import { ProfileLink, Avatar, Name } from './UserInfo.style';
 
-import styles from './UserInfo.module.css'
-
-const UserInfo = ({avatar, name}) => {
-
-    const history = useHistory();
-
-    const onSignOut = () =>{
-        history.push('/auth')
-    }
-
-    return (
-        <div className={styles.userInfo}>
-            <img src={avatar} alt='avatar'></img>
-            <b>{name}</b>
-            <i className={styles.signOut} onClick={()=>onSignOut()} ></i>
-        </div>
-    ) 
-}
-
-UserInfo.defaultProps = {
-    avatar:'',
-    name:'Name',
-}
+const UserInfo = ({ avatar, name }) => {
+  return (
+    <ProfileLink to={'/profile'}>
+      <Avatar src={avatar} alt={'avatar'} />
+      {!isMobileDevice ? <Name>{name}</Name> : null}
+    </ProfileLink>
+  );
+};
 
 UserInfo.propTypes = {
-    avatar:PropTypes.string.isRequired,
-    name:PropTypes.string.isRequired,
-}
+  avatar: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+};
 
-export default UserInfo
+export default UserInfo;

@@ -11,7 +11,7 @@ import {
   LoaderComponent,
   GoogleRedirect,
 } from 'components';
-import { AuthPage, ContactsPage, UseFulPage } from 'views';
+import { AuthPage, ContactsPage, MaterialsPage, ResultsPage } from 'views';
 import { getQuestionsName } from 'redux/questions/questionsSelector';
 import { getToken } from 'redux/auth/authSelectors';
 import authOperations from 'redux/auth/authOperations';
@@ -60,11 +60,15 @@ function App() {
             </PublicRoute>
 
             <PrivateRoute path="/test" redirectTo="/auth">
-              {typeTest && <Questions />}
+              <Questions />
             </PrivateRoute>
 
-            <PrivateRoute path="/useful-info" redirectTo="/auth">
+            <PrivateRoute path="/materials" redirectTo="/auth">
               <UseFulPage />
+            </PrivateRoute>
+    
+            <PrivateRoute path="/results" redirectTo="/auth">
+              <ResultsPage />
             </PrivateRoute>
           </Switch>
         </Suspense>
