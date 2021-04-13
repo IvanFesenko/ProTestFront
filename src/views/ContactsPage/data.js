@@ -14,8 +14,6 @@ const data = [
     img: team0,
     name: 'Anastasiia Yermakova',
     position: 'Scrum master',
-    description:
-      'Lorem Ipsum has been the standard "fish" for Latin texts since the early 16th century.',
     social: {
       linkedin: 'https://www.linkedin.com/in/yermakovaa/',
       github: 'https://github.com/yermakovaa/',
@@ -28,8 +26,6 @@ const data = [
     img: team1,
     name: 'Ivan Fesenko',
     position: 'Team lead',
-    description:
-      'Lorem Ipsum has been the standard "fish" for Latin texts since the early 16th century.',
     social: {
       linkedin: 'https://www.linkedin.com/in/ivanfesenko/',
       github: 'https://github.com/IvanFesenko',
@@ -43,8 +39,6 @@ const data = [
     img: team2,
     name: 'Nikita Samoilenko',
     position: 'Back-End Developer',
-    description:
-      'Lorem Ipsum has been the standard "fish" for Latin texts since the early 16th century.',
     social: {
       linkedin: 'https://www.linkedin.com/in/bignichok/',
       github: 'https://github.com/Bignichok',
@@ -58,8 +52,6 @@ const data = [
     img: team3,
     name: 'Vadim Yevlanov',
     position: 'Back-End Developer',
-    description:
-      'Lorem Ipsum has been the standard "fish" for Latin texts since the early 16th century.',
     social: {
       linkedin: 'https://www.linkedin.com/in/vadym-yevlanov/',
       github: 'https://github.com/Google-Barma',
@@ -73,8 +65,6 @@ const data = [
     img: team4,
     name: 'Yaroslav Paltsun',
     position: 'Front-End Developer',
-    description:
-      'Lorem Ipsum has been the standard "fish" for Latin texts since the early 16th century.',
     social: {
       linkedin: 'https://www.linkedin.com/in/yaroslav-paltsun-6553421a8/',
       github: 'https://github.com/yaarchee',
@@ -87,8 +77,6 @@ const data = [
     img: team5,
     name: 'Maksym Kosovets',
     position: 'Front-End Developer',
-    description:
-      'Lorem Ipsum has been the standard "fish" for Latin texts since the early 16th century.',
     social: {
       linkedin: 'https://www.linkedin.com/in/kosovmax/',
       github: 'https://github.com/KosovMax',
@@ -102,8 +90,6 @@ const data = [
     img: team6,
     name: 'Maxim Kozlov',
     position: 'Front-End Developer',
-    description:
-      'Lorem Ipsum has been the standard "fish" for Latin texts since the early 16th century.',
     social: {
       linkedin: 'https://www.linkedin.com/in/maxim-kozlov/',
       github: 'https://github.com/Maximusvin',

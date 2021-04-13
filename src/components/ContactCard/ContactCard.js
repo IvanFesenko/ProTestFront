@@ -3,23 +3,15 @@ import SocialButtonBlock from './SocialButtonBlock';
 
 import {
   Card,
-  DescriptionWrapper,
   Name,
   Position,
-  Description,
   Photo,
   Location,
   LocationIcon,
+  DescriptionWrapper,
 } from './ContactCard.style';
 
-const ContactCard = ({
-  img,
-  name,
-  position,
-  description,
-  social,
-  location,
-}) => {
+const ContactCard = ({ img, name, position, social, location }) => {
   return (
     <Card>
       <Photo src={img} alt={name} />
@@ -30,7 +22,6 @@ const ContactCard = ({
           <LocationIcon />
           {location}
         </Location>
-        <Description>{description}</Description>
         <SocialButtonBlock social={social} />
       </DescriptionWrapper>
     </Card>
@@ -41,7 +32,6 @@ ContactCard.defaultProps = {
   img: '',
   name: '',
   position: '',
-  description: '',
   social: '',
   location: '',
 };
@@ -50,13 +40,12 @@ ContactCard.propTypes = {
   img: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   position: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
   social: PropTypes.shape({
     linkedin: PropTypes.string.isRequired,
     github: PropTypes.string.isRequired,
     telegram: PropTypes.string.isRequired,
   }),
-  location: PropTypes.string.isRequired,
 };
 
 export default ContactCard;
