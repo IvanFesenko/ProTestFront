@@ -16,7 +16,7 @@ const logIn = createAsyncThunk(
 
       return response.data;
     } catch (e) {
-      return rejectWithValue(e.message);
+      return rejectWithValue(e.response.data);
     }
   },
 );
@@ -27,9 +27,10 @@ const register = createAsyncThunk(
     try {
       const response = await authSingUp(requestDataRegister);
 
-      token.set(response.data.token);
+      token.set(response.token);
+      return response;
     } catch (e) {
-      return rejectWithValue(e.message);
+      return rejectWithValue(e.response.data);
     }
   },
 );
@@ -41,7 +42,7 @@ const logOut = createAsyncThunk(
       await authLogOut();
       token.unset();
     } catch (e) {
-      return rejectWithValue(e.message);
+      return rejectWithValue(e.response.data);
     }
   },
 );
@@ -60,9 +61,9 @@ const getCurrentUser = createAsyncThunk(
 
     try {
       const response = getUser();
-      return response.data;
+      return response;
     } catch (e) {
-      return thunkAPI.rejectWithValue(e);
+      return thunkAPI.rejectWithValue(e.response.data);
     }
   },
 );
