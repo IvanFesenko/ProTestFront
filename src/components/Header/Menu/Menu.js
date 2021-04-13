@@ -5,7 +5,7 @@ import Navigation, { List, Item, Link } from './Menu.style';
 
 const MENU_LINKS = [
   { name: 'Home', value: <Link to={'/'}>Home</Link> },
-  { name: 'Materials', value: <Link to={'/materials'}>Materials</Link> },
+  { name: 'Materials', value: <Link to={'/useful-info'}>Materials</Link> },
   { name: 'Contacts', value: <Link to={'/contacts'}>Contacts</Link> },
 ];
 

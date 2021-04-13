@@ -34,10 +34,10 @@ export const Home = () => {
         <QuoteAuthorInfo>Linux kernel creator, hacker, 1969</QuoteAuthorInfo>
       </QuoteWrapper>
       <ButtonsWrapper>
-        <TestLink onClick={() => setTest(typeTest.tech)} to={'/'}>
+        <TestLink onClick={() => setTest(typeTest.tech)} to={'/test'}>
           QA technical training
         </TestLink>
-        <TestLink onClick={() => setTest(typeTest.theor)} to={'/'}>
+        <TestLink onClick={() => setTest(typeTest.theor)} to={'/test'}>
           Testing theory
         </TestLink>
       </ButtonsWrapper>
