@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import SocialButtonBlock from './SocialButtonBlock';
-import LocationOnIcon from '@material-ui/icons/LocationOn';
+
 import {
   Card,
   DescriptionWrapper,
@@ -9,6 +9,7 @@ import {
   Description,
   Photo,
   Location,
+  LocationIcon,
 } from './ContactCard.style';
 
 const ContactCard = ({
@@ -21,12 +22,12 @@ const ContactCard = ({
 }) => {
   return (
     <Card>
-      <Photo src={img} alt={`${name}`} />
+      <Photo src={img} alt={name} />
       <DescriptionWrapper>
         <Name>{name}</Name>
         <Position>{position}</Position>
         <Location>
-          <LocationOnIcon style={{ fontSize: 18 }} />
+          <LocationIcon />
           {location}
         </Location>
         <Description>{description}</Description>

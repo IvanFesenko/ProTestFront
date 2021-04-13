@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import LocationOnIcon from '@material-ui/icons/LocationOn';
+
+import { orange } from 'assets/colors';
 
 export const Card = styled.li`
   width: 250px;
@@ -55,6 +58,10 @@ export const Location = styled.p`
   margin-bottom: 15px;
 `;
 
+export const LocationIcon = styled(LocationOnIcon)`
+  font-size: 18px;
+`;
+
 export const Description = styled.p`
   font-size: 12px;
   line-height: 16px;
@@ -91,6 +98,6 @@ export const SocialLink = styled.a`
   transition: color 0.2s linear;
 
   &:hover {
-    color: #ff6b09;
+    color: ${orange};
   }
 `;
