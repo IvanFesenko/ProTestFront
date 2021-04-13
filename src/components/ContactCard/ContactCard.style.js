@@ -7,7 +7,6 @@ import { orange } from 'assets/colors';
 
 export const Card = styled.li`
   width: 250px;
-  height: 360px;
   background-color: #fff;
   margin: 10px;
   transition: 0.45s;
@@ -22,18 +21,7 @@ export const Card = styled.li`
 `;
 
 export const DescriptionWrapper = styled.div`
-  position: absolute;
-  bottom: -102px;
-  left: 0;
-  width: 100%;
-  background-color: #fff;
-  transition: all 0.3s linear;
   padding-top: 15px;
-
-  ${Card}:hover & {
-    bottom: 0px;
-    background-color: rgba(255, 255, 255, 0.9);
-  }
 `;
 
 export const Name = styled.h3`
