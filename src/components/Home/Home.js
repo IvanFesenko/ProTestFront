@@ -1,12 +1,16 @@
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+
 import { SectionTitle } from 'components';
+import { getQuote } from 'services/API';
 
 import {
   ButtonsWrapper,
   QuoteWrapper,
   QuoteAuthor,
-  QuoteAuthorInfo,
   TestLink,
+  QuoteSkeleton,
+  QuoteAuthorSkeleton,
 } from './Home.styles';
 import {
   setTypeTest,
@@ -16,6 +20,7 @@ import {
 import typeTest from 'services/variables';
 
 export const Home = () => {
+  const [{ quote, author }, setQuote] = useState({ quote: '', author: '' });
   const dispatch = useDispatch();
 
   const setTest = typeTest => {
@@ -23,15 +28,28 @@ export const Home = () => {
     dispatch(setTypeTest(typeTest));
   };
 
+  useEffect(() => {
+    const updateQuote = async () => {
+      const quote = await getQuote();
+      setQuote(quote);
+    };
+    updateQuote();
+  }, []);
+
   return (
     <>
       <QuoteWrapper>
         <SectionTitle>
-          “Regression testing. What is it? If the system compiles, that's good,
-          if it boots, that's great!”
+          {!quote ? (
+            <>
+              <QuoteSkeleton />
+              <QuoteSkeleton />
+            </>
+          ) : (
+            quote
+          )}
         </SectionTitle>
-        <QuoteAuthor>Linus Torvalds</QuoteAuthor>
-        <QuoteAuthorInfo>Linux kernel creator, hacker, 1969</QuoteAuthorInfo>
+        <QuoteAuthor>{!author ? <QuoteAuthorSkeleton /> : author}</QuoteAuthor>
       </QuoteWrapper>
       <ButtonsWrapper>
         <TestLink onClick={() => setTest(typeTest.tech)} to={'/'}>
