@@ -1,5 +1,7 @@
 import styled from 'styled-components';
+import { withStyles } from '@material-ui/core/styles';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
+import GitHubIcon from '@material-ui/icons/GitHub';
 
 import { orange } from 'assets/colors';
 
@@ -21,7 +23,7 @@ export const Card = styled.li`
 
 export const DescriptionWrapper = styled.div`
   position: absolute;
-  bottom: -100px;
+  bottom: -102px;
   left: 0;
   width: 100%;
   background-color: #fff;
@@ -58,9 +60,21 @@ export const Location = styled.p`
   margin-bottom: 15px;
 `;
 
-export const LocationIcon = styled(LocationOnIcon)`
-  font-size: 18px;
-`;
+const LocationIconStyles = {
+  root: {
+    fontSize: '18px',
+  },
+};
+
+export const LocationIcon = withStyles(LocationIconStyles)(LocationOnIcon);
+
+const GitHubIconStyles = {
+  root: {
+    fontSize: '20px',
+  },
+};
+
+export const GitIcon = withStyles(GitHubIconStyles)(GitHubIcon);
 
 export const Description = styled.p`
   font-size: 12px;
