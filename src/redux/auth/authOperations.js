@@ -35,6 +35,18 @@ const register = createAsyncThunk(
   },
 );
 
+const authByGoogle = createAsyncThunk(
+  'auth/googleAuth',
+  async (requestData, { rejectWithValue }) => {
+    try {
+      token.set(requestData);
+      return requestData;
+    } catch (e) {
+      return rejectWithValue(e);
+    }
+  },
+);
+
 const logOut = createAsyncThunk(
   'auth/logOut',
   async (_, { rejectWithValue }) => {
@@ -71,6 +83,7 @@ const getCurrentUser = createAsyncThunk(
 const exports = {
   logIn,
   register,
+  authByGoogle,
   logOut,
   getCurrentUser,
 };

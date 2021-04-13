@@ -8,3 +8,4 @@ export { Questions } from './Questions';
 export { ContactCard } from './ContactCard';
 export { SectionTitle } from './SectionTitle';
 export { LoaderComponent } from './LoaderComponent';
+export { GoogleRedirect } from './GoogleRedirect';

@@ -15,6 +15,7 @@ import {
 } from './AuthForm.style';
 import authOperations from 'redux/auth/authOperations';
 import { getError } from 'redux/auth/authSelectors';
+import { BASE_URL } from 'services/API';
 import { ReactComponent as GoogleIcon } from 'assets/images/google.svg';
 
 const AuthForm = ({ auth }) => {
@@ -60,6 +61,7 @@ const AuthForm = ({ auth }) => {
   const handleOnClick = e => {
     e.preventDefault();
     history.push(auth ? '/register' : '/auth');
+    setError(null);
   };
 
   return (
@@ -67,7 +69,8 @@ const AuthForm = ({ auth }) => {
       <Text>
         You can use your Google Account to {auth ? 'authorize:' : 'register:'}
       </Text>
-      <GoogleButton>
+
+      <GoogleButton href={`${BASE_URL}/auth/google`}>
         <GoogleIcon width="18" height="18" />
         <Span>Google</Span>
       </GoogleButton>

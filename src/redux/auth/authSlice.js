@@ -33,6 +33,11 @@ const userSlice = createSlice({
       setError(state, action);
     },
 
+    [authOperations.authByGoogle.fulfilled](state, action) {
+      state.token = action.payload;
+      state.isAuth = true;
+    },
+
     [authOperations.logOut.pending](state, _) {
       state.error = null;
     },

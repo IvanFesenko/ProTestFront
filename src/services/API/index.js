@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+export const BASE_URL = 'https://little-bitch.herokuapp.com';
+
 const Axios = axios.create({
-  baseURL: 'https://little-bitch.herokuapp.com',
+  baseURL: BASE_URL,
 });
 
 export const token = {

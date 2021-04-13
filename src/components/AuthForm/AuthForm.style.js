@@ -33,16 +33,16 @@ export const Text = styled.p`
   }
 `;
 
-export const GoogleButton = styled.button`
-  display: flex;
+export const GoogleButton = styled.a`
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
   padding: 17px 37px;
   margin-bottom: 30px;
   filter: drop-shadow(0px 2px 2px rgba(0, 0, 0, 0.1));
-  cursor: pointer;
   background-color: #fafafa;
+  color: #000000;
   border: none;
   outline: none;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
