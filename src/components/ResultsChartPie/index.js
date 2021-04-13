@@ -1,1 +1,1 @@
-export {default} from './ResultsChartPie'
+export { default as ResultsChartPie } from './ResultsChartPie';
