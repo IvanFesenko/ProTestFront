@@ -72,3 +72,16 @@ export const getUser = async () => {
     return e;
   }
 };
+
+export const getQuote = async () => {
+  try {
+    const { data } = await Axios.get('/quotes');
+    return data.responseBody;
+  } catch (error) {
+    return {
+      quote:
+        "Regression testing. What is it? If the system compiles, that's good, if it boots, that's great!",
+      author: 'Linus Torvalds',
+    };
+  }
+};
