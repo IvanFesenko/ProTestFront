@@ -7,3 +7,4 @@ export { AuthForm } from './AuthForm';
 export { Questions } from './Questions';
 export { ContactCard } from './ContactCard';
 export { SectionTitle } from './SectionTitle';
+export { PersonalSettings } from './PersonalSettings';

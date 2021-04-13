@@ -1,6 +1,13 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import { Header, Footer, Main, Home, Questions } from 'components';
+import {
+  Header,
+  Footer,
+  Main,
+  Home,
+  Questions,
+  PersonalSettings,
+} from 'components';
 import { AuthPage, ContactsPage, UseFulPage } from 'views';
 import { useSelector } from 'react-redux';
 import { getQuestionsName } from 'redux/questions/questionsSelector';
@@ -11,7 +18,9 @@ function App() {
   return (
     <>
       <Header />
+
       <Main>
+        <PersonalSettings />
         {typeTest && <Questions />}
         <Route exact path="/">
           <Home />
@@ -29,7 +38,6 @@ function App() {
         <Route path="/useful-info">
           <UseFulPage />
         </Route>
-
       </Main>
       <Footer />
     </>

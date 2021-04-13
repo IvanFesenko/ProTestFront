@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import TextField from '@material-ui/core/TextField';
 
+import { subBlack } from 'assets/colors';
+
 export const Form = styled.form`
   padding: 30px 20px;
   background-color: #ffffff;
@@ -77,8 +79,9 @@ export const SignBlock = styled.div`
 `;
 
 export const SignButton = styled.button`
+  position: relative;
   width: 110px;
-  padding: 25px 0;
+  height: 67px;
   background-color: ${({ active }) => (active ? '#ff6b09' : '#ffffff')};
   border: ${({ active }) =>
     active ? '1px solid transparent' : '1px solid #ced2d1'};
@@ -94,9 +97,12 @@ export const SignButton = styled.button`
 
   :hover,
   :focus {
-    background-color: #ff6b09;
+    background-color: ${({ disabled }) => (disabled ? subBlack : '#ff6b09')};
     color: #ffffff;
     border: 1px solid transparent;
+  }
+  :disabled {
+    background-color: ${subBlack};
   }
 
   @media (min-width: 768px) {

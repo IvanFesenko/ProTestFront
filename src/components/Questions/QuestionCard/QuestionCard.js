@@ -24,6 +24,7 @@ const useStyles = makeStyles({
     '& .MuiTypography-body1': {
       fontFamily: 'Montserrat',
       fontSize: '12px',
+      wordBreak: 'break-word',
       '@media (min-width: 480px)': {
         fontSize: '16px',
       },
