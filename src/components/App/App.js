@@ -8,7 +8,7 @@ import {
   Questions,
   PersonalSettings,
 } from 'components';
-import { AuthPage, ContactsPage, UseFulPage } from 'views';
+import { AuthPage, ContactsPage, MaterialsPage, ResultsPage } from 'views';
 import { useSelector } from 'react-redux';
 import { getQuestionsName } from 'redux/questions/questionsSelector';
 
@@ -20,8 +20,7 @@ function App() {
       <Header />
 
       <Main>
-        <PersonalSettings />
-        {typeTest && <Questions />}
+        {/* {typeTest && <Questions />} */}
         <Route exact path="/">
           <Home />
         </Route>
@@ -35,9 +34,16 @@ function App() {
         <Route path="/contacts">
           <ContactsPage />
         </Route>
-        <Route path="/useful-info">
-          <UseFulPage />
+        <Route path="/test">
+          <Questions />
         </Route>
+        <Route path="/materials">
+          <MaterialsPage />
+        </Route>
+        <Route path="/results">
+          <ResultsPage />
+        </Route>
+
       </Main>
       <Footer />
     </>

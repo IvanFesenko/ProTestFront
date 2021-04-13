@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { Skeleton } from '@material-ui/lab';
+import { withStyles } from '@material-ui/core/styles';
 
-import { orange, secondaryBackground, greyLine } from 'assets/colors';
+import { orange, secondaryBackground, alfaOrange } from 'assets/colors';
 
 export const QuoteWrapper = styled.div`
   padding: 30px 0 20px 0;
@@ -31,6 +33,16 @@ export const ButtonsWrapper = styled.div`
   }
 `;
 
+const QuoteSkeletonStyles = {
+  root: {
+    maxWidth: '80%',
+    margin: '0 auto',
+    backgroundColor: alfaOrange,
+  },
+};
+
+export const QuoteSkeleton = withStyles(QuoteSkeletonStyles)(Skeleton);
+
 export const QuoteAuthor = styled.p`
   font-size: 12px;
   text-align: center;
@@ -43,6 +55,16 @@ export const QuoteAuthor = styled.p`
     line-height: 36px;
   }
 `;
+
+const AuthorSkeletonStyles = {
+  root: {
+    maxWidth: '40%',
+    margin: '0 auto',
+    backgroundColor: alfaOrange,
+  },
+};
+
+export const QuoteAuthorSkeleton = withStyles(AuthorSkeletonStyles)(Skeleton);
 
 export const QuoteAuthorInfo = styled.p`
   font-size: 10px;

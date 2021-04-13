@@ -1,21 +1,28 @@
 import PropTypes from 'prop-types';
+import SocialButtonBlock from './SocialButtonBlock';
+
 import {
   Card,
-  DescriptionWrapper,
   Name,
   Position,
-  Description,
   Photo,
+  Location,
+  LocationIcon,
+  DescriptionWrapper,
 } from './ContactCard.style';
 
-const ContactCard = ({ img, title, position, description }) => {
+const ContactCard = ({ img, name, position, social, location }) => {
   return (
     <Card>
-      <Photo src={img} alt={`${title}`} />
+      <Photo src={img} alt={name} />
       <DescriptionWrapper>
-        <Name>{title}</Name>
+        <Name>{name}</Name>
         <Position>{position}</Position>
-        <Description>{description}</Description>
+        <Location>
+          <LocationIcon />
+          {location}
+        </Location>
+        <SocialButtonBlock social={social} />
       </DescriptionWrapper>
     </Card>
   );
@@ -23,16 +30,22 @@ const ContactCard = ({ img, title, position, description }) => {
 
 ContactCard.defaultProps = {
   img: '',
-  title: '',
+  name: '',
   position: '',
-  description: '',
+  social: '',
+  location: '',
 };
 
 ContactCard.propTypes = {
   img: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   position: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  social: PropTypes.shape({
+    linkedin: PropTypes.string.isRequired,
+    github: PropTypes.string.isRequired,
+    telegram: PropTypes.string.isRequired,
+  }),
 };
 
 export default ContactCard;
