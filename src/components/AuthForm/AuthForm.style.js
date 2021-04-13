@@ -1,5 +1,8 @@
 import styled from 'styled-components';
-import TextField from '@material-ui/core/TextField';
+import { TextField } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+
+import { orange, errorColor } from 'assets/colors';
 
 export const Form = styled.form`
   padding: 30px 20px;
@@ -62,24 +65,66 @@ export const Span = styled.span`
   letter-spacing: 0.02em;
 `;
 
-export const Field = styled(TextField)`
-  width: 100%;
+export const FieldsContainer = styled.div`
+  position: relative;
+  margin-bottom: 20px;
+  @media (min-width: 768px) {
+    margin-bottom: 40px;
+  }
+`;
+
+export const Field = withStyles({
+  root: {
+    width: '100%',
+    '&:not(:last-child)': {
+      marginBottom: '20px',
+      '@media (min-width: 768px)': {
+        marginBottom: '24px',
+      },
+    },
+    '& .MuiOutlinedInput-root': {
+      borderRadius: '0px',
+    },
+    '& .MuiFormLabel-root.Mui-focused': {
+      color: `${orange}`,
+    },
+    '& .MuiFormLabel-root': {
+      fontFamily: 'Montserrat, sans-serif',
+      fontWeight: '500',
+      fontSize: '14px',
+      lineHeight: '1.21',
+      letterSpacing: '0.02em',
+      color: '#BBBBBB',
+    },
+    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
+      borderColor: `${orange}`,
+    },
+    '& .MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline': {
+      borderColor: `${errorColor}`,
+    },
+  },
+})(props => <TextField variant="outlined" required {...props} />);
+
+export const Error = styled.p`
+  position: absolute;
+  top: -18px;
+  color: ${errorColor};
+  font-weight: 500;
+  @media (min-width: 768px) {
+    top: -25px;
+  }
 `;
 
 export const SignBlock = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
-
-  @media (min-width: 768px) {
-    margin-top: 16px;
-  }
+  justify-content: center;
 `;
 
 export const SignButton = styled.button`
   width: 110px;
   padding: 25px 0;
-  background-color: ${({ active }) => (active ? '#ff6b09' : '#ffffff')};
+  background-color: ${({ active }) => (active ? `${orange}` : '#ffffff')};
   border: ${({ active }) =>
     active ? '1px solid transparent' : '1px solid #ced2d1'};
   color: ${({ active }) => (active ? '#ffffff' : '#000000')};
@@ -94,9 +139,13 @@ export const SignButton = styled.button`
 
   :hover,
   :focus {
-    background-color: #ff6b09;
+    background-color: ${orange};
     color: #ffffff;
     border: 1px solid transparent;
+  }
+
+  :not(:last-child) {
+    margin-right: 20px;
   }
 
   @media (min-width: 768px) {
