@@ -79,7 +79,6 @@ export const getQuote = async () => {
     return data.responseBody;
   } catch (error) {
     return {
-      _id: '607487b483bc317aafca18cb',
       quote:
         "Regression testing. What is it? If the system compiles, that's good, if it boots, that's great!",
       author: 'Linus Torvalds',
