@@ -27,13 +27,15 @@ const MobileMenu = ({ list }) => {
         )}
       </Burger>
       {isOpenMenu && (
-        <List>
-          {list.map(link => (
-            <Item key={link.name} onClick={menuToggle}>
-              {link.value}
-            </Item>
-          ))}
-        </List>
+        <>
+          <List>
+            {list.map(link => (
+              <Item key={link.name} onClick={menuToggle}>
+                {link.value}
+              </Item>
+            ))}
+          </List>
+        </>
       )}
     </Wrapper>
   );
