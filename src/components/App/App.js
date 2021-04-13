@@ -64,9 +64,9 @@ function App() {
             </PrivateRoute>
 
             <PrivateRoute path="/materials" redirectTo="/auth">
-              <UseFulPage />
+              <MaterialsPage />
             </PrivateRoute>
-    
+
             <PrivateRoute path="/results" redirectTo="/auth">
               <ResultsPage />
             </PrivateRoute>
