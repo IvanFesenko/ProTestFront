@@ -2,6 +2,8 @@ import React from 'react';
 import { setAnswer } from 'redux/questions/questionsSlice';
 import { FormControlLabel, makeStyles } from '@material-ui/core';
 
+import Skeleton from '@material-ui/lab/Skeleton';
+
 import RadioOrange from './Radiostyles';
 import {
   QuestionCardStyle,
@@ -24,6 +26,7 @@ const useStyles = makeStyles({
     '& .MuiTypography-body1': {
       fontFamily: 'Montserrat',
       fontSize: '12px',
+      wordBreak: 'break-word',
       '@media (min-width: 480px)': {
         fontSize: '16px',
       },

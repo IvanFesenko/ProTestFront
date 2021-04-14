@@ -4,6 +4,8 @@ import { withStyles } from '@material-ui/core/styles';
 
 import { orange, errorColor } from 'assets/colors';
 
+import { subBlack } from 'assets/colors';
+
 export const Form = styled.form`
   padding: 30px 20px;
   background-color: #ffffff;
@@ -122,8 +124,9 @@ export const SignBlock = styled.div`
 `;
 
 export const SignButton = styled.button`
+  position: relative;
   width: 110px;
-  padding: 25px 0;
+  padding: 67px;
   background-color: ${({ active }) => (active ? `${orange}` : '#ffffff')};
   border: ${({ active }) =>
     active ? '1px solid transparent' : '1px solid #ced2d1'};
@@ -139,9 +142,12 @@ export const SignButton = styled.button`
 
   :hover,
   :focus {
-    background-color: ${orange};
+    background-color: ${({ disabled }) => (disabled ? subBlack : orange)};
     color: #ffffff;
     border: 1px solid transparent;
+  }
+  :disabled {
+    background-color: ${subBlack};
   }
 
   :not(:last-child) {
