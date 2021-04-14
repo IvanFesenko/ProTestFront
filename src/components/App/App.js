@@ -1,3 +1,4 @@
+import React from 'react';
 import { Suspense, useEffect } from 'react';
 import { Switch, useLocation, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
@@ -8,6 +9,7 @@ import {
   Main,
   Home,
   Questions,
+  PersonalSettings,
   LoaderComponent,
   GoogleRedirect,
 } from 'components';
@@ -36,6 +38,7 @@ function App() {
   return (
     <>
       <Header />
+
       <Main>
         <Suspense fallback={<LoaderComponent />}>
           <Switch>
@@ -75,6 +78,10 @@ function App() {
               <ResultsPage />
             </PrivateRoute>
 
+            <PrivateRoute path="/profile" redirectTo="/auth">
+              <PersonalSettings />
+            </PrivateRoute>
+    
             <Route>
               <NotFoundPage />
             </Route>

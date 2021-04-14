@@ -12,4 +12,5 @@ export { GoogleRedirect } from './GoogleRedirect';
 export { LogoutButton } from './LogoutButton';
 export { UserInfo } from './UserInfo';
 export { ResultsChartPie } from './ResultsChartPie';
+export { PersonalSettings } from './PersonalSettings';
 
