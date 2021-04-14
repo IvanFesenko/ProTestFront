@@ -1,4 +1,5 @@
 import { useHistory } from 'react-router';
+import { useSelector } from 'react-redux';
 import { ResultsChartPie, SectionTitle } from 'components';
 import cat from 'assets/images/cat.png';
 

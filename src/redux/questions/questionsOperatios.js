@@ -7,6 +7,7 @@ import {
   sendAnswersTheoretical,
 } from 'services/API';
 import typeTest from 'services/variables';
+import { orange, grey } from 'assets/colors';
 
 const getQuestions = createAsyncThunk(
   'question/get',
@@ -48,7 +49,19 @@ const sendAnswers = createAsyncThunk(
         default:
           console.log('хватит читерить');
       }
-      return response;
+      const correct = response.filter(question => {
+        return question.userAnswerIs;
+      }).length;
+      const incorrect = response.length - correct;
+
+      return {
+        chart: [
+          { value: correct, label: 'Correct', color: orange },
+          { value: incorrect, label: 'Incorrect', color: grey },
+        ],
+        title: 'Not bad',
+        description: 'But you still need to learn some materials.',
+      };
     } catch (e) {
       return rejectedWithValue(e);
     }
