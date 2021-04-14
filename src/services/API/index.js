@@ -87,11 +87,11 @@ export const getQuote = async () => {
     };
   }
 };
-///change-password
 
-export const changePassword = async () => {
+//{newPassword, oldPassword}
+export const changePassword = async data => {
   try {
-    const response = await Axios.post('/change-password');
+    const response = await Axios.post('/change-password', data);
     return response.status === 200;
   } catch (e) {
     return e;
