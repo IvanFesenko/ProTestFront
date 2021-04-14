@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { Skeleton } from '@material-ui/lab';
+import { withStyles } from '@material-ui/core/styles';
 
-import { orange, secondaryBackground } from 'assets/colors';
+import { orange, secondaryBackground, alfaOrange } from 'assets/colors';
 
 export const QuoteWrapper = styled.div`
   padding: 30px 0 20px 0;
@@ -31,22 +33,15 @@ export const ButtonsWrapper = styled.div`
   }
 `;
 
-export const Quote = styled.h2`
-  font-size: 12px;
-  text-align: center;
-  font-weight: 700;
-  line-height: 20px;
-  padding: 0 24px 40px 24px;
-  @media (min-width: 750px) {
-    font-size: 22px;
-    line-height: 20px;
-    font-weight: 700;
-  }
-  @media (min-width: 900px) {
-    line-height: 30px;
-    padding: 0 155px 40px 155px;
-  }
-`;
+const QuoteSkeletonStyles = {
+  root: {
+    maxWidth: '80%',
+    margin: '0 auto',
+    backgroundColor: alfaOrange,
+  },
+};
+
+export const QuoteSkeleton = withStyles(QuoteSkeletonStyles)(Skeleton);
 
 export const QuoteAuthor = styled.p`
   font-size: 12px;
@@ -55,22 +50,21 @@ export const QuoteAuthor = styled.p`
   line-height: 14px;
   margin-bottom: 8px;
   padding-top: 20px;
-  ::before {
-    content: '';
-    display: block;
-    margin: 0 auto;
-    width: 41%;
-    height: 1px;
-    background-color: rgba(0, 18, 47, 0.15);
-    top: -20px;
-    transform: translateY(-50%);
-    position: relative;
-  }
   @media (min-width: 750px) {
     font-size: 18px;
     line-height: 36px;
   }
 `;
+
+const AuthorSkeletonStyles = {
+  root: {
+    maxWidth: '40%',
+    margin: '0 auto',
+    backgroundColor: alfaOrange,
+  },
+};
+
+export const QuoteAuthorSkeleton = withStyles(AuthorSkeletonStyles)(Skeleton);
 
 export const QuoteAuthorInfo = styled.p`
   font-size: 10px;

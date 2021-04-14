@@ -19,10 +19,16 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
+const questionsPersistConfig = {
+  key: 'question',
+  storage,
+  whitelist: ['questions', 'currentQuestion', 'typeTest'],
+};
+
 const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    questions: questionsReducer,
+    questions: persistReducer(questionsPersistConfig, questionsReducer),
   },
   // eslint-disable-next-line no-process-env
   devTools: process.env.NODE_ENV === 'development',

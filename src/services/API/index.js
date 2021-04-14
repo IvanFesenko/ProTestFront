@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+export const BASE_URL = 'https://little-bitch.herokuapp.com';
+
 const Axios = axios.create({
-  baseURL: 'https://little-bitch.herokuapp.com',
+  baseURL: BASE_URL,
 });
 
 export const token = {
@@ -14,8 +16,8 @@ export const token = {
 };
 
 export const authSingUp = async userInfo => {
-  const response = await Axios.post('/registration', userInfo);
-  return response;
+  const { data } = await Axios.post('/registration', userInfo);
+  return data;
 };
 
 export const authLogIn = async authData => {
@@ -46,11 +48,42 @@ export const getTheoreticalTests = async () => {
   }
 };
 
+export const sendAnswersTechnical = async answerData => {
+  try {
+    const { data } = await Axios.post('/tests/technical', answerData);
+    return data.requestBody;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const sendAnswersTheoretical = async answerData => {
+  try {
+    const { data } = await Axios.post('/tests/theoretical', answerData);
+    return data.requestBody;
+  } catch (error) {
+    return error;
+  }
+};
+
 export const getUser = async () => {
   try {
-    // const response = await Axios.get('/currentUser');
-    // return response;
+    const { data } = await Axios.get('/current-user');
+    return data.responseBody;
   } catch (e) {
     return e;
+  }
+};
+
+export const getQuote = async () => {
+  try {
+    const { data } = await Axios.get('/quotes');
+    return data.responseBody;
+  } catch (error) {
+    return {
+      quote:
+        "Regression testing. What is it? If the system compiles, that's good, if it boots, that's great!",
+      author: 'Linus Torvalds',
+    };
   }
 };

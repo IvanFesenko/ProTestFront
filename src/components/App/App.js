@@ -1,34 +1,75 @@
+import { Suspense, useEffect } from 'react';
+import { Switch, useLocation } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
-import React from 'react'; //, { lazy, Suspense }
-import { Route } from 'react-router-dom';
-import { Header, Footer, Main, Home,  Questions } from 'components';
-import { AuthPage, ContactsPage, UseFulPage} from 'views';
-
+import {
+  Header,
+  Footer,
+  Main,
+  Home,
+  Questions,
+  LoaderComponent,
+  GoogleRedirect,
+} from 'components';
+import { AuthPage, ContactsPage, MaterialsPage, ResultsPage } from 'views';
+import { getToken } from 'redux/auth/authSelectors';
+import authOperations from 'redux/auth/authOperations';
+import PrivateRoute from 'components/PrivateRoute';
+import PublicRoute from 'components/PublicRoute';
 
 function App() {
+  const dispatch = useDispatch();
+  const location = useLocation();
+  const token = useSelector(getToken);
+
+  useEffect(() => {
+    if (!token) return;
+    dispatch(authOperations.getCurrentUser());
+  }, [dispatch, token]);
+
   return (
     <>
       <Header />
       <Main>
+        <Suspense fallback={<LoaderComponent />}>
+          <Switch>
+            <PrivateRoute exact path="/" redirectTo="/auth">
+              <Home />
+            </PrivateRoute>
 
-        <Questions />
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/auth">
-          <AuthPage auth={true} />
-        </Route>
-        <Route path="/register">
-          <AuthPage auth={false} />
-        </Route>
+            <PublicRoute
+              path="/auth"
+              restricted
+              redirectTo={location?.state?.from ?? '/'}
+            >
+              <AuthPage auth={true} />
+            </PublicRoute>
 
-        <Route path="/contacts">
-          <ContactsPage />
-        </Route>
-        <Route path="/useful-info">
-          <UseFulPage />
-        </Route>
+            <PublicRoute path="/register" restricted redirectTo="/">
+              <AuthPage auth={false} />
+            </PublicRoute>
 
+            <PublicRoute path="/google-redirect" restricted redirectTo="/">
+              <GoogleRedirect />
+            </PublicRoute>
+
+            <PublicRoute path="/contacts">
+              <ContactsPage />
+            </PublicRoute>
+
+            <PrivateRoute path="/test" redirectTo="/auth">
+              <Questions />
+            </PrivateRoute>
+
+            <PrivateRoute path="/materials" redirectTo="/auth">
+              <MaterialsPage />
+            </PrivateRoute>
+
+            <PrivateRoute path="/results" redirectTo="/auth">
+              <ResultsPage />
+            </PrivateRoute>
+          </Switch>
+        </Suspense>
       </Main>
       <Footer />
     </>

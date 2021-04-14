@@ -1,32 +1,51 @@
 import PropTypes from 'prop-types';
-import styles from './ContactCard.module.css';
+import SocialButtonBlock from './SocialButtonBlock';
 
-const ContactCard = ({img, title, position, description}) => {
-    return (
-        <div className={styles.ContactsCardList}>
-            <div className={styles.ContactsCard}>
-                <img src={img} alt="name" />
-                <div>
-                    <h5>{title}</h5>
-                    <span>{position}</span>
-                    <p>{description}</p>
-                </div>
-            </div>
-        </div>
-    ) 
-}
+import {
+  Card,
+  Name,
+  Position,
+  Photo,
+  Location,
+  LocationIcon,
+  DescriptionWrapper,
+} from './ContactCard.style';
+
+const ContactCard = ({ img, name, position, social, location }) => {
+  return (
+    <Card>
+      <Photo src={img} alt={name} />
+      <DescriptionWrapper>
+        <Name>{name}</Name>
+        <Position>{position}</Position>
+        <Location>
+          <LocationIcon />
+          {location}
+        </Location>
+        <SocialButtonBlock social={social} />
+      </DescriptionWrapper>
+    </Card>
+  );
+};
 
 ContactCard.defaultProps = {
-    img:'',
-    title:'',
-    position:'',
-    description:''
-}
+  img: '',
+  name: '',
+  position: '',
+  social: '',
+  location: '',
+};
 
 ContactCard.propTypes = {
-    img:PropTypes.string.isRequired,
-    title:PropTypes.string.isRequired,
-    position:PropTypes.string.isRequired,
-    description:PropTypes.string.isRequired
-}
-export default ContactCard
+  img: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  position: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  social: PropTypes.shape({
+    linkedin: PropTypes.string.isRequired,
+    github: PropTypes.string.isRequired,
+    telegram: PropTypes.string.isRequired,
+  }),
+};
+
+export default ContactCard;
