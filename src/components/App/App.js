@@ -12,14 +12,12 @@ import {
   GoogleRedirect,
 } from 'components';
 import { AuthPage, ContactsPage, MaterialsPage, ResultsPage } from 'views';
-import { getQuestionsName } from 'redux/questions/questionsSelector';
 import { getToken } from 'redux/auth/authSelectors';
 import authOperations from 'redux/auth/authOperations';
 import PrivateRoute from 'components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
 
 function App() {
-  const typeTest = useSelector(getQuestionsName);
   const dispatch = useDispatch();
   const location = useLocation();
   const token = useSelector(getToken);

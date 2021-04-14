@@ -34,6 +34,11 @@ export const Home = () => {
       setQuote(quote);
     };
     updateQuote();
+    const interval = setInterval(() => {
+      updateQuote();
+    }, 10000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (
