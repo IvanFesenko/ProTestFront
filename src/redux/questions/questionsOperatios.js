@@ -59,6 +59,7 @@ const sendAnswers = createAsyncThunk(
           { value: correct, label: 'Correct', color: orange },
           { value: incorrect, label: 'Incorrect', color: grey },
         ],
+        results: { correct_answers: correct, total_questions: response.length },
         title: 'Not bad',
         description: 'But you still need to learn some materials.',
       };

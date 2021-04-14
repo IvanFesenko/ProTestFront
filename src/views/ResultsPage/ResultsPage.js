@@ -1,6 +1,9 @@
 import { useHistory } from 'react-router';
 import { useSelector } from 'react-redux';
+
 import { ResultsChartPie, SectionTitle } from 'components';
+import { getResult } from 'redux/questions/questionsSelector';
+
 import cat from 'assets/images/cat.png';
 
 import {
@@ -30,6 +33,7 @@ const INITIAL_STATE_CHART = [
 
 const ResultsPage = () => {
   const history = useHistory();
+  const results = useSelector(getResult);
 
   const tryAgain = () => {
     //think about realization
@@ -38,31 +42,33 @@ const ResultsPage = () => {
 
   return (
     <Wrapper>
-      <SectionTitle>
-        Results<TestName>{`[ ${'Testing theory'}_]`}</TestName>
-      </SectionTitle>
-      <ChartWrap>
-        <ResultsChartPie dataPoints={INITIAL_STATE_CHART} />
-      </ChartWrap>
-      <WrapperRelative>
-        <Results>
-          <ResultName>
-            {`Correct answers - `}
-            <ResultValue>{INITIAL_STATE_RESULTS.correct_answers}</ResultValue>
-          </ResultName>
-          <VertLine />
-          <ResultName>
-            {`Total questions - `}
-            <ResultValue>{INITIAL_STATE_RESULTS.total_questions}</ResultValue>
-          </ResultName>
-        </Results>
-      </WrapperRelative>
-      <Img src={cat} alt="cat" />
-      <ResultTitle>Not bad!</ResultTitle>
-      <ResultDescription>
-        But you still need to learn some materials.
-      </ResultDescription>
-      <Button onClick={tryAgain}>Try again</Button>
+      {results && (
+        <>
+          <SectionTitle>
+            Results<TestName>{`[ ${'Testing theory'}_]`}</TestName>
+          </SectionTitle>
+          <ChartWrap>
+            <ResultsChartPie dataPoints={results.chart} />
+          </ChartWrap>
+          <WrapperRelative>
+            <Results>
+              <ResultName>
+                {`Correct answers - `}
+                <ResultValue>{results.results.correct_answers}</ResultValue>
+              </ResultName>
+              <VertLine />
+              <ResultName>
+                {`Total questions - `}
+                <ResultValue>{results.results.total_questions}</ResultValue>
+              </ResultName>
+            </Results>
+          </WrapperRelative>
+          <Img src={cat} alt="cat" />
+          <ResultTitle>{results.title}</ResultTitle>
+          <ResultDescription>{results.description}</ResultDescription>
+          <Button onClick={tryAgain}>Try again</Button>
+        </>
+      )}
     </Wrapper>
   );
 };

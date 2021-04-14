@@ -64,6 +64,7 @@ function Questions() {
       results[questions[i]._id] = questions[i].userAnswer;
     }
     dispatch(sendAnswers({ results, typeTest }));
+    history.push('/results');
   };
 
   const nextQuestion = () => {
