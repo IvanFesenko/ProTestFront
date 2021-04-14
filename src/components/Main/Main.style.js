@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
 export const Container = styled.div`
   position: relative;
   width: 100%;
-  min-height: calc(100vh - 126px);
+  min-height: calc(100vh - 128px);
   margin: 0 auto;
   padding: 0 20px;
 
