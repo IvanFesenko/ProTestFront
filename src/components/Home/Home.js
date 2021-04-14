@@ -52,10 +52,10 @@ export const Home = () => {
         <QuoteAuthor>{!author ? <QuoteAuthorSkeleton /> : author}</QuoteAuthor>
       </QuoteWrapper>
       <ButtonsWrapper>
-        <TestLink onClick={() => setTest(typeTest.tech)} to={'/'}>
+        <TestLink onClick={() => setTest(typeTest.tech)} to={'/test'}>
           QA technical training
         </TestLink>
-        <TestLink onClick={() => setTest(typeTest.theor)} to={'/'}>
+        <TestLink onClick={() => setTest(typeTest.theor)} to={'/test'}>
           Testing theory
         </TestLink>
       </ButtonsWrapper>

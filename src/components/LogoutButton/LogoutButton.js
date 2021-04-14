@@ -1,15 +1,17 @@
 import { useHistory } from 'react-router';
+import { useDispatch } from 'react-redux';
 
 import { LogOut } from './LogoutButton.style';
 
-import { authLogOut } from 'services/API';
+import authOperations from 'redux/auth/authOperations';
 import { Icon } from './Icon';
 
 const LogoutButton = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const onClickHandler = () => {
-    authLogOut();
+    dispatch(authOperations.logOut());
     history.push('/auth');
   };
 

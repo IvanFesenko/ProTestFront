@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+export const BASE_URL = 'https://little-bitch.herokuapp.com';
+
 const Axios = axios.create({
-  baseURL: 'https://little-bitch.herokuapp.com',
+  baseURL: BASE_URL,
 });
 
 export const token = {
@@ -14,8 +16,8 @@ export const token = {
 };
 
 export const authSingUp = async userInfo => {
-  const response = await Axios.post('/registration', userInfo);
-  return response;
+  const { data } = await Axios.post('/registration', userInfo);
+  return data;
 };
 
 export const authLogIn = async authData => {
@@ -66,8 +68,8 @@ export const sendAnswersTheoretical = async answerData => {
 
 export const getUser = async () => {
   try {
-    // const response = await Axios.get('/currentUser');
-    // return response;
+    const { data } = await Axios.get('/current-user');
+    return data.responseBody;
   } catch (e) {
     return e;
   }

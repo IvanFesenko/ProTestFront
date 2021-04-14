@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+
 import {
   Form,
   Text,
@@ -8,42 +10,30 @@ import {
   Field,
   SignBlock,
   SignButton,
+  FieldsContainer,
+  Error,
 } from './AuthForm.style';
+import authOperations from 'redux/auth/authOperations';
+import { getError } from 'redux/auth/authSelectors';
+import { BASE_URL } from 'services/API';
 import { ReactComponent as GoogleIcon } from 'assets/images/google.svg';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles({
-  root: {
-    marginBottom: '20px',
-    '@media (min-width: 768px)': {
-      marginBottom: '24px',
-    },
-    '& .MuiOutlinedInput-root': {
-      borderRadius: '0px',
-    },
-    '& .MuiFormLabel-root.Mui-focused': {
-      color: '#FF6B09',
-    },
-    '& .MuiFormLabel-root': {
-      fontFamily: 'Montserrat, sans-serif',
-      fontWeight: '500',
-      fontSize: '14px',
-      lineHeight: '1.21',
-      letterSpacing: '0.02em',
-      color: '#BBBBBB',
-    },
-    '& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline': {
-      borderColor: '#FF6B09',
-    },
-  },
-});
 
 const AuthForm = ({ auth }) => {
-  const classes = useStyles();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
+  const newError = useSelector(getError);
+
   const history = useHistory();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    setError(newError);
+    setTimeout(() => {
+      setError(null);
+    }, 3000);
+  }, [newError]);
 
   const handleChange = ({ target: { value, name } }) => {
     switch (name) {
@@ -60,13 +50,18 @@ const AuthForm = ({ auth }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    auth
+      ? dispatch(authOperations.logIn({ email, password }))
+      : dispatch(authOperations.register({ name, email, password }));
     setName('');
     setEmail('');
     setPassword('');
   };
 
-  const handleOnClick = () => {
+  const handleOnClick = e => {
+    e.preventDefault();
     history.push(auth ? '/register' : '/auth');
+    setError(null);
   };
 
   return (
@@ -74,45 +69,44 @@ const AuthForm = ({ auth }) => {
       <Text>
         You can use your Google Account to {auth ? 'authorize:' : 'register:'}
       </Text>
-      <GoogleButton>
+
+      <GoogleButton href={`${BASE_URL}/auth/google`}>
         <GoogleIcon width="18" height="18" />
         <Span>Google</Span>
       </GoogleButton>
       <Text>
         Or {auth ? 'login' : 'register'} to our app using e-mail and password:
       </Text>
-      {!auth && (
+      <FieldsContainer>
+        {error && <Error>{error.message ?? error}</Error>}
+        {!auth && (
+          <Field
+            label="Name"
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleChange}
+            error={Boolean(error)}
+          />
+        )}
         <Field
-          className={classes.root}
-          label="Name"
-          variant="outlined"
-          type="text"
-          name="name"
-          required
-          value={name}
+          label="E-mail"
+          type="email"
+          name="email"
+          value={email}
           onChange={handleChange}
+          error={Boolean(error)}
         />
-      )}
-      <Field
-        className={classes.root}
-        label="E-mail"
-        variant="outlined"
-        type="email"
-        name="email"
-        required
-        value={email}
-        onChange={handleChange}
-      />
-      <Field
-        className={classes.root}
-        label="Password"
-        variant="outlined"
-        type="password"
-        name="password"
-        required
-        value={password}
-        onChange={handleChange}
-      />
+        <Field
+          label="Password"
+          type="password"
+          name="password"
+          value={password}
+          onChange={handleChange}
+          error={Boolean(error)}
+        />
+      </FieldsContainer>
+
       <SignBlock>
         <SignButton
           active={auth}
