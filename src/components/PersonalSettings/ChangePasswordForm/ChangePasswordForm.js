@@ -1,7 +1,6 @@
 import { CircularProgress, makeStyles } from '@material-ui/core';
 
 import { useEffect, useState } from 'react';
-import { useStyles as useStylesForm } from 'components/AuthForm';
 
 import {
   Field,
@@ -23,8 +22,7 @@ const useStylesLoader = makeStyles({
   },
 });
 
-function ChangePasswordForm() {
-  const classes = useStylesForm();
+function ChangePasswordForm() {  
   const styleLoader = useStylesLoader();
   const [oldPassword, setSldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -84,7 +82,7 @@ function ChangePasswordForm() {
         </FormHeader>
 
         <Field
-          className={classes.root}
+         
           label="Old Password"
           variant="outlined"
           type={showPassword ? 'text' : 'password'}
@@ -94,7 +92,7 @@ function ChangePasswordForm() {
           onChange={handleChange}
         />
         <Field
-          className={classes.root}
+          
           label="New Password"
           variant="outlined"
           type={showPassword ? 'text' : 'password'}
@@ -104,7 +102,7 @@ function ChangePasswordForm() {
           onChange={handleChange}
         />
         <Field
-          className={classes.root}
+          
           label="Confirm new password"
           variant="outlined"
           type={showPassword ? 'text' : 'password'}
