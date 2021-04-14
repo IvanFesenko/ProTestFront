@@ -38,6 +38,8 @@ const sendAnswers = createAsyncThunk(
   async ({ results: answerData, typeTest: type }, { rejectedWithValue }) => {
     try {
       let response;
+      let title;
+      let description;
       switch (type) {
         case typeTest.tech:
           response = await sendAnswersTechnical(answerData);
@@ -53,15 +55,34 @@ const sendAnswers = createAsyncThunk(
         return question.userAnswerIs;
       }).length;
       const incorrect = response.length - correct;
-
+      if (correct === 0) {
+        title = 'Dnishe ibanoe';
+        description = 'QA ne tvoe bro';
+      } else if (correct > 0 && correct < 6) {
+        title = 'Po4ti Dnishe ibanoe';
+        description = 'Tu podumaj tvoe li eto';
+      } else if (correct >= 6 && correct < 9) {
+        title = 'Ni huyovo';
+        description = 'Nugno eshe po4itat`';
+      } else if (correct >= 9 && correct < 12) {
+        title = 'Midlovkie pogonu';
+        description = 'Malec priznaet';
+      } else {
+        title = 'Bogina';
+        description = 'zp 3k$ tvoja';
+      }
       return {
         chart: [
           { value: correct, label: 'Correct', color: orange },
           { value: incorrect, label: 'Incorrect', color: grey },
         ],
-        results: { correct_answers: correct, total_questions: response.length },
-        title: 'Not bad',
-        description: 'But you still need to learn some materials.',
+        results: {
+          correct_answers: correct,
+          total_questions: response.length,
+        },
+        type,
+        title,
+        description,
       };
     } catch (e) {
       return rejectedWithValue(e);

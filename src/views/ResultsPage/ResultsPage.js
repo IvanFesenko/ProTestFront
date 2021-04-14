@@ -1,8 +1,9 @@
 import { useHistory } from 'react-router';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { ResultsChartPie, SectionTitle } from 'components';
 import { getResult } from 'redux/questions/questionsSelector';
+import { resetTestData } from 'redux/questions/questionsSlice';
 
 import cat from 'assets/images/cat.png';
 
@@ -21,22 +22,13 @@ import {
   Button,
 } from './ResultsPage.style';
 
-const INITIAL_STATE_RESULTS = {
-  correct_answers: 9,
-  total_questions: 12,
-};
-
-const INITIAL_STATE_CHART = [
-  { value: 9, label: 'Correct', color: '#FF6B01' },
-  { value: 3, label: 'Incorrect', color: '#D7D7D7' },
-];
-
 const ResultsPage = () => {
   const history = useHistory();
   const results = useSelector(getResult);
+  const dispatch = useDispatch();
 
   const tryAgain = () => {
-    //think about realization
+    dispatch(resetTestData());
     history.push('/test');
   };
 
@@ -45,7 +37,7 @@ const ResultsPage = () => {
       {results && (
         <>
           <SectionTitle>
-            Results<TestName>{`[ ${'Testing theory'}_]`}</TestName>
+            Results<TestName>{`[ Testing ${results.type}_]`}</TestName>
           </SectionTitle>
           <ChartWrap>
             <ResultsChartPie dataPoints={results.chart} />

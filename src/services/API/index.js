@@ -87,3 +87,13 @@ export const getQuote = async () => {
     };
   }
 };
+///change-password
+
+export const changePassword = async () => {
+  try {
+    const response = await Axios.post('/change-password');
+    return response.status === 200;
+  } catch (e) {
+    return e;
+  }
+};

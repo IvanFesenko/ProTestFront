@@ -13,7 +13,10 @@ import ArrowLeft from './Button/ArrowLeft';
 import ArrowRight from './Button/ArrowRight';
 
 import { QuestionsMain, QuestionNavigationButtons } from './Questions.style';
-import { setCurrentQuestions } from 'redux/questions/questionsSlice';
+import {
+  setCurrentQuestions,
+  resetTestData,
+} from 'redux/questions/questionsSlice';
 
 import {
   getQuestionsFromStore,
@@ -63,7 +66,9 @@ function Questions() {
       }
       results[questions[i]._id] = questions[i].userAnswer;
     }
+    dispatch(resetTestData());
     dispatch(sendAnswers({ results, typeTest }));
+
     history.push('/results');
   };
 
