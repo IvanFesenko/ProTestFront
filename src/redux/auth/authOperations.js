@@ -72,7 +72,7 @@ const getCurrentUser = createAsyncThunk(
     token.set(persistedToken);
 
     try {
-      const response = getUser();
+      const response = await getUser();
       return response;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.response.data);

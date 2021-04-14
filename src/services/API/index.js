@@ -68,10 +68,10 @@ export const sendAnswersTheoretical = async answerData => {
 
 export const getUser = async () => {
   try {
-    const { data } = await Axios.get('/current-user');
-    return data.responseBody;
+    const response = await Axios.get('/current-user');
+    return response.data.responseBody;
   } catch (e) {
-    return e;
+    throw new Error(e);
   }
 };
 
