@@ -6,27 +6,53 @@ const initialState = {
   token: null,
   isAuth: false,
   isRefreshing: false,
+  error: null,
 };
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
   extraReducers: {
+    [authOperations.logIn.pending](state, _) {
+      state.error = null;
+    },
     [authOperations.logIn.fulfilled](state, action) {
       setData(state, action);
+    },
+    [authOperations.logIn.rejected](state, action) {
+      setError(state, action);
+    },
+
+    [authOperations.register.pending](state, _) {
+      state.error = null;
     },
     [authOperations.register.fulfilled](state, action) {
       setData(state, action);
     },
+    [authOperations.register.rejected](state, action) {
+      setError(state, action);
+    },
+
+    [authOperations.authByGoogle.fulfilled](state, action) {
+      state.token = action.payload;
+      state.isAuth = true;
+    },
+
+    [authOperations.logOut.pending](state, _) {
+      state.error = null;
+    },
     [authOperations.logOut.fulfilled](state, _) {
       unSetData(state);
     },
-
-    [authOperations.getCurrentUser.fulfilled](state, action) {
-      refreshUser(state, action);
+    [authOperations.logOut.rejected](state, action) {
+      setError(state, action);
     },
+
     [authOperations.getCurrentUser.pending](state) {
       state.isRefreshing = true;
+    },
+    [authOperations.getCurrentUser.fulfilled](state, action) {
+      refreshUser(state, action);
     },
     [authOperations.getCurrentUser.rejected](state) {
       state.isRefreshing = false;
@@ -40,6 +66,10 @@ function setData(state, action) {
   state.isAuth = true;
 }
 
+function setError(state, action) {
+  state.error = action.payload;
+}
+
 function unSetData(state) {
   state.user = initialState.user;
   state.token = initialState.token;
@@ -47,11 +77,9 @@ function unSetData(state) {
 }
 
 function refreshUser(state, action) {
-  console.log(action.payload);
-  state.user = action.payload.user;
+  state.user = action.payload;
   state.isAuth = true;
   state.isRefreshing = false;
-  console.log(' after refreshUser' + state.user);
 }
 
 export default userSlice.reducer;
