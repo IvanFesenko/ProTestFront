@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   background-color: ${mainBackground};
   background-position: top right;
   background-repeat: no-repeat;
-  background-size:cover;
+  background-size: cover;
 
   @media (max-width: 900px) {
     background-position: top center;
@@ -14,9 +14,12 @@ export const Wrapper = styled.div`
 `;
 
 export const Container = styled.div`
+  position: relative;
   width: 100%;
+  min-height: calc(100vh - 126px);
   margin: 0 auto;
   padding: 0 20px;
+
   @media (min-width: 750px) {
     max-width: 652px;
   }
