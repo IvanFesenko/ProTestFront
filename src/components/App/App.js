@@ -1,9 +1,7 @@
-
 import React from 'react';
 import { Suspense, useEffect } from 'react';
-import { Switch, useLocation, Route } from 'react-router-dom';
+import { Switch, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-
 
 import {
   Header,
@@ -16,14 +14,12 @@ import {
   GoogleRedirect,
 } from 'components';
 import { AuthPage, ContactsPage, MaterialsPage, ResultsPage } from 'views';
-import { getQuestionsName } from 'redux/questions/questionsSelector';
 import { getToken } from 'redux/auth/authSelectors';
 import authOperations from 'redux/auth/authOperations';
 import PrivateRoute from 'components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
 
 function App() {
-  const typeTest = useSelector(getQuestionsName);
   const dispatch = useDispatch();
   const location = useLocation();
   const token = useSelector(getToken);
@@ -75,7 +71,7 @@ function App() {
             <PrivateRoute path="/results" redirectTo="/auth">
               <ResultsPage />
             </PrivateRoute>
-    
+
             <PrivateRoute path="/profile" redirectTo="/auth">
               <PersonalSettings />
             </PrivateRoute>

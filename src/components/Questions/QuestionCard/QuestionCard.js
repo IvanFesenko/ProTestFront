@@ -2,8 +2,6 @@ import React from 'react';
 import { setAnswer } from 'redux/questions/questionsSlice';
 import { FormControlLabel, makeStyles } from '@material-ui/core';
 
-import Skeleton from '@material-ui/lab/Skeleton';
-
 import RadioOrange from './Radiostyles';
 import {
   QuestionCardStyle,
