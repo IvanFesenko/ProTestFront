@@ -1,14 +1,13 @@
 import { NavLink } from 'react-router-dom';
 
-import logoImage from 'assets/images/logo.png'; 
+import { ReactComponent as LogoIcon } from 'assets/images/logo.svg';
 
 const Logo = () => {
-
   return (
-    <NavLink to="/">
-      <img src={logoImage} alt="logo"/>
-    </NavLink>    
-  )
-}
+    <NavLink to="/" aria-label="Logo ProTest">
+      <LogoIcon />
+    </NavLink>
+  );
+};
 
 export default Logo;
