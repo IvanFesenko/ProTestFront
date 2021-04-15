@@ -1,6 +1,17 @@
+import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
+import { useSelector, useDispatch } from 'react-redux';
+
 import { ResultsChartPie, SectionTitle } from 'components';
-import cat from 'assets/images/cat.png';
+import { getResult } from 'redux/questions/questionsSelector';
+import { resetTestData } from 'redux/questions/questionsSlice';
+
+import cat0 from 'assets/images/cat0.png';
+import cat1 from 'assets/images/cat1.png';
+import cat2 from 'assets/images/cat2.png';
+import cat3 from 'assets/images/cat3.png';
+import cat4 from 'assets/images/cat4.png';
+import cat5 from 'assets/images/cat5.png';
 
 import {
   Wrapper,
@@ -17,51 +28,67 @@ import {
   Button,
 } from './ResultsPage.style';
 
-const INITIAL_STATE_RESULTS = {
-  correct_answers: 9,
-  total_questions: 12,
+const getResultImage = id => {
+  switch (id) {
+    case 0:
+      return cat0;
+    case 1:
+      return cat1;
+    case 2:
+      return cat2;
+    case 3:
+      return cat3;
+    case 4:
+      return cat4;
+    default:
+      return cat5;
+  }
 };
 
-const INITIAL_STATE_CHART = [
-  { value: 9, label: 'Correct', color: '#FF6B01' },
-  { value: 3, label: 'Incorrect', color: '#D7D7D7' },
-];
-
 const ResultsPage = () => {
+  const [img, setImg] = useState(null);
   const history = useHistory();
+  const results = useSelector(getResult);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (results?.points) setImg(getResultImage(results.points));
+  }, [results]);
 
   const tryAgain = () => {
-    //think about realization
+    dispatch(resetTestData());
     history.push('/test');
   };
 
   return (
     <Wrapper>
-      <SectionTitle>
-        Results<TestName>{`[ ${'Testing theory'}_]`}</TestName>
-      </SectionTitle>
-      <ChartWrap>
-        <ResultsChartPie dataPoints={INITIAL_STATE_CHART} />
-      </ChartWrap>
-      <WrapperRelative>
-        <Results>
-          <ResultName>
-            {`Correct answers - `}
-            <ResultValue>{INITIAL_STATE_RESULTS.correct_answers}</ResultValue>
-          </ResultName>
-          <VertLine />
-          <ResultName>
-            {`Total questions - `}
-            <ResultValue>{INITIAL_STATE_RESULTS.total_questions}</ResultValue>
-          </ResultName>
-        </Results>
-      </WrapperRelative>
-      <Img src={cat} alt="cat" />
-      <ResultTitle>Not bad!</ResultTitle>
-      <ResultDescription>
-        But you still need to learn some materials.
-      </ResultDescription>
-      <Button onClick={tryAgain}>Try again</Button>
+      {results && (
+        <>
+          <SectionTitle>
+            Results<TestName>{`[ Testing ${results.type}_]`}</TestName>
+          </SectionTitle>
+          <ChartWrap>
+            <ResultsChartPie dataPoints={results.chart} />
+          </ChartWrap>
+          <WrapperRelative>
+            <Results>
+              <ResultName>
+                {`Correct answers - `}
+                <ResultValue>{results.results.correct_answers}</ResultValue>
+              </ResultName>
+              <VertLine />
+              <ResultName>
+                {`Total questions - `}
+                <ResultValue>{results.results.total_questions}</ResultValue>
+              </ResultName>
+            </Results>
+          </WrapperRelative>
+          <Img src={img} alt="cat" />
+          <ResultTitle>{results.title}</ResultTitle>
+          <ResultDescription>{results.description}</ResultDescription>
+          <Button onClick={tryAgain}>Try again</Button>
+        </>
+      )}
     </Wrapper>
   );
 };

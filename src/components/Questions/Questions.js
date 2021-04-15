@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 
 import Skeleton from '@material-ui/lab/Skeleton';
 import { makeStyles } from '@material-ui/core/styles';
@@ -11,8 +13,10 @@ import ArrowLeft from './Button/ArrowLeft';
 import ArrowRight from './Button/ArrowRight';
 
 import { QuestionsMain, QuestionNavigationButtons } from './Questions.style';
-import { setCurrentQuestions } from 'redux/questions/questionsSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import {
+  setCurrentQuestions,
+  resetTestData,
+} from 'redux/questions/questionsSlice';
 
 import {
   getQuestionsFromStore,
@@ -29,6 +33,7 @@ const useStyles = makeStyles({
 
 function Questions() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const typeTest = useSelector(getQuestionsName);
   const questions = useSelector(getQuestionsFromStore);
   const currentQuestionIndex = useSelector(getQuestionNumber);
@@ -55,14 +60,16 @@ function Questions() {
 
     for (let i = 0; i < questions.length; i++) {
       if (!questions[i].userAnswer) {
-        console.log('sendAnswers');
         results = null;
         setError('not all question get answer');
         return;
       }
       results[questions[i]._id] = questions[i].userAnswer;
     }
+    dispatch(resetTestData());
     dispatch(sendAnswers({ results, typeTest }));
+
+    history.push('/results');
   };
 
   const nextQuestion = () => {

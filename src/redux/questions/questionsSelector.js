@@ -9,3 +9,7 @@ export const getQuestionsName = state => {
 export const getQuestionNumber = state => {
   return state.questions.currentQuestion;
 };
+
+export const getResult = state => {
+  return state.questions.result;
+};

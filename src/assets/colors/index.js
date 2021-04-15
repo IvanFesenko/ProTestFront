@@ -13,3 +13,5 @@ export const borderBottom = '#ababab';
 export const greyLine = 'rgba(0, 18, 47, 0.15)';
 
 export const alfaOrange = 'rgba(255, 108, 10, 0.15)';
+
+export const grey = '#D7D7D7';

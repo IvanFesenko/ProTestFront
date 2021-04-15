@@ -68,6 +68,9 @@ function setData(state, action) {
 
 function setError(state, action) {
   state.error = action.payload;
+  state.user = null;
+  state.token = null;
+  state.isAuth = false;
 }
 
 function unSetData(state) {
