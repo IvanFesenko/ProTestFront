@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { orange } from 'assets/colors';
+import { orange, disableColor } from 'assets/colors';
 
 const Button = styled.button`
   border: none;
@@ -23,18 +23,18 @@ const Button = styled.button`
   }
   :hover {
     background-color: ${orange};
-    color: ${({ disabled }) => (disabled ? `#9f9f9f` : `white`)};
+    color: ${({ disabled }) => (disabled ? `${disableColor}` : `white`)};
   }
   :hover svg path {
-    fill: ${({ disabled }) => (disabled ? `#9f9f9f` : `white`)};
+    fill: ${({ disabled }) => (disabled ? `${disableColor}` : `white`)};
   }
   :disabled {
     background-color: #cccccc;
-    color: #9f9f9f;
+    color: ${disableColor};
     cursor: auto;
 
     svg path {
-      fill: #9f9f9f;
+      fill: ${disableColor};
     }
   }
 
