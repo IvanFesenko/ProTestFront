@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  margin: 0 auto;
   padding-top: 39px;
   padding-bottom: 50px;
+  max-width: 1030px;
   @media (min-width: 768px) {
     padding-top: 80px;
     padding-bottom: 70px;
@@ -11,7 +13,7 @@ export const Container = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 99px 105px;
+    padding: 99px 0;
   }
 `;
 
