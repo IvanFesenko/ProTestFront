@@ -22,7 +22,7 @@ const authPersistConfig = {
 const questionsPersistConfig = {
   key: 'question',
   storage,
-  whitelist: ['questions', 'currentQuestion', 'typeTest'],
+  whitelist: ['questions', 'currentQuestion', 'typeTest', 'result'],
 };
 
 const store = configureStore({
