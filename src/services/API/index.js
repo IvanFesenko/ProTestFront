@@ -30,6 +30,11 @@ export const authLogOut = async () => {
   return response;
 };
 
+export const getUser = async () => {
+  const { data } = await Axios.get('/current-user');
+  return data.responseBody;
+};
+
 export const getTechnicalTests = async () => {
   try {
     const { data } = await Axios.get('/tests/technical');
@@ -63,15 +68,6 @@ export const sendAnswersTheoretical = async answerData => {
     return data.requestBody;
   } catch (error) {
     return error;
-  }
-};
-
-export const getUser = async () => {
-  try {
-    const response = await Axios.get('/current-user');
-    return response.data.responseBody;
-  } catch (e) {
-    throw new Error(e);
   }
 };
 
