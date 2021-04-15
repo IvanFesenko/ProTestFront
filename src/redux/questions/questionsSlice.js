@@ -49,11 +49,13 @@ const questionsSlice = createSlice({
 function resetStore(state) {
   state.currentQuestion = 0;
   state.questions = [];
-  state.typeTest = null;
+  state.result = null;
 }
+
 export const {
   setAnswer,
   setCurrentQuestions,
   setTypeTest,
+  resetTestData,
 } = questionsSlice.actions;
 export default questionsSlice.reducer;

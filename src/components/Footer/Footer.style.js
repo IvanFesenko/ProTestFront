@@ -7,11 +7,8 @@ export default styled.footer`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px 18px;
+  height: 56px;
   background-color: ${secondaryBackground};
-  @media (min-width: 750px) {
-    padding: 19px 7px;
-  }
 `;
 
 export const Text = styled.p`

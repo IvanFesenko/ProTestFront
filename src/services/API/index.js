@@ -68,10 +68,10 @@ export const sendAnswersTheoretical = async answerData => {
 
 export const getUser = async () => {
   try {
-    const { data } = await Axios.get('/current-user');
-    return data.responseBody;
+    const response = await Axios.get('/current-user');
+    return response.data.responseBody;
   } catch (e) {
-    return e;
+    throw new Error(e);
   }
 };
 
@@ -85,5 +85,14 @@ export const getQuote = async () => {
         "Regression testing. What is it? If the system compiles, that's good, if it boots, that's great!",
       author: 'Linus Torvalds',
     };
+  }
+};
+
+export const changePassword = async data => {
+  try {
+    const response = await Axios.post('/change-password', data);
+    return response?.status === 201;
+  } catch (e) {
+    return false;
   }
 };

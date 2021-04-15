@@ -1,5 +1,6 @@
+import React from 'react';
 import { Suspense, useEffect } from 'react';
-import { Switch, useLocation } from 'react-router-dom';
+import { Switch, useLocation, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import {
@@ -8,10 +9,17 @@ import {
   Main,
   Home,
   Questions,
+  PersonalSettings,
   LoaderComponent,
   GoogleRedirect,
 } from 'components';
-import { AuthPage, ContactsPage, MaterialsPage, ResultsPage } from 'views';
+import {
+  AuthPage,
+  ContactsPage,
+  MaterialsPage,
+  ResultsPage,
+  NotFoundPage,
+} from 'views';
 import { getToken } from 'redux/auth/authSelectors';
 import authOperations from 'redux/auth/authOperations';
 import PrivateRoute from 'components/PrivateRoute';
@@ -30,6 +38,7 @@ function App() {
   return (
     <>
       <Header />
+
       <Main>
         <Suspense fallback={<LoaderComponent />}>
           <Switch>
@@ -68,6 +77,14 @@ function App() {
             <PrivateRoute path="/results" redirectTo="/auth">
               <ResultsPage />
             </PrivateRoute>
+
+            <PrivateRoute path="/profile" redirectTo="/auth">
+              <PersonalSettings />
+            </PrivateRoute>
+    
+            <Route>
+              <NotFoundPage />
+            </Route>
           </Switch>
         </Suspense>
       </Main>
