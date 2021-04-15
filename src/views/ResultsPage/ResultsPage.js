@@ -31,7 +31,6 @@ import {
 const getResultImage = id => {
   switch (id) {
     case 1:
-      console.log();
       return cat0;
     case 2:
       return cat1;
