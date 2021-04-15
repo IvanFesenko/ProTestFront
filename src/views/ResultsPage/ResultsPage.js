@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -45,11 +46,14 @@ const getResultImage = id => {
 };
 
 const ResultsPage = () => {
+  const [img, setImg] = useState(null);
   const history = useHistory();
   const results = useSelector(getResult);
   const dispatch = useDispatch();
 
-  const img = getResultImage(results.points);
+  useEffect(() => {
+    if (results?.points) setImg(getResultImage(results.points));
+  }, [results]);
 
   const tryAgain = () => {
     dispatch(resetTestData());

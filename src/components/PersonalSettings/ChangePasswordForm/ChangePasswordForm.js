@@ -76,8 +76,8 @@ function ChangePasswordForm() {
       history.push('/');
     } else {
       setError('Something were wrong((( Please try again');
+      setSending(false);
     }
-    setSending(false);
   };
 
   return (
