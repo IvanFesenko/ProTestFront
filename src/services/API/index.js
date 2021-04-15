@@ -88,12 +88,11 @@ export const getQuote = async () => {
   }
 };
 
-//{newPassword, oldPassword}
 export const changePassword = async data => {
   try {
     const response = await Axios.post('/change-password', data);
-    return response.status === 200;
+    return response?.status === 201;
   } catch (e) {
-    return e;
+    return false;
   }
 };
