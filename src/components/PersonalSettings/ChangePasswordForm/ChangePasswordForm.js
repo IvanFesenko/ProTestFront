@@ -39,7 +39,7 @@ function ChangePasswordForm() {
     if (error) {
       showError = setTimeout(() => {
         setError(false);
-      }, 3000000);
+      }, 3000);
     }
 
     return () => {
