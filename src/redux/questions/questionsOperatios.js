@@ -40,6 +40,7 @@ const sendAnswers = createAsyncThunk(
       let response;
       let title;
       let description;
+      let points;
       switch (type) {
         case typeTest.tech:
           response = await sendAnswersTechnical(answerData);
@@ -56,20 +57,25 @@ const sendAnswers = createAsyncThunk(
       }).length;
       const incorrect = response.length - correct;
       if (correct === 0) {
-        title = 'Dnishe ibanoe';
-        description = 'QA ne tvoe bro';
+        points = 0;
+        title = 'WTF?';
+        description = 'You should looking another kind of job';
       } else if (correct > 0 && correct < 6) {
-        title = 'Po4ti Dnishe ibanoe';
-        description = 'Tu podumaj tvoe li eto';
+        points = 1;
+        title = 'To sad';
+        description = 'Your result make me cry';
       } else if (correct >= 6 && correct < 9) {
-        title = 'Ni huyovo';
-        description = 'Nugno eshe po4itat`';
+        points = 2;
+        title = 'Cool';
+        description = 'I like your knowledge';
       } else if (correct >= 9 && correct < 12) {
-        title = 'Midlovkie pogonu';
-        description = 'Malec priznaet';
+        points = 3;
+        title = 'Not bad';
+        description = 'But you still need to learn some materials.';
       } else {
-        title = 'Bogina';
-        description = 'zp 3k$ tvoja';
+        points = 4;
+        title = 'Wow';
+        description = "It's amazing. Could you get same result again?";
       }
       return {
         chart: [
@@ -83,6 +89,7 @@ const sendAnswers = createAsyncThunk(
         type,
         title,
         description,
+        points,
       };
     } catch (e) {
       return rejectedWithValue(e);

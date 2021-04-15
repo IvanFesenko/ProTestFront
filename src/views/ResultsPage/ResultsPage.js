@@ -5,7 +5,12 @@ import { ResultsChartPie, SectionTitle } from 'components';
 import { getResult } from 'redux/questions/questionsSelector';
 import { resetTestData } from 'redux/questions/questionsSlice';
 
-import cat from 'assets/images/cat.png';
+import cat0 from 'assets/images/cat0.png';
+import cat1 from 'assets/images/cat1.png';
+import cat2 from 'assets/images/cat2.png';
+import cat3 from 'assets/images/cat3.png';
+import cat4 from 'assets/images/cat4.png';
+import cat5 from 'assets/images/cat5.png';
 
 import {
   Wrapper,
@@ -22,10 +27,29 @@ import {
   Button,
 } from './ResultsPage.style';
 
+const getResultImage = id => {
+  switch (id) {
+    case 0:
+      return cat0;
+    case 1:
+      return cat1;
+    case 2:
+      return cat2;
+    case 3:
+      return cat3;
+    case 4:
+      return cat4;
+    default:
+      return cat5;
+  }
+};
+
 const ResultsPage = () => {
   const history = useHistory();
   const results = useSelector(getResult);
   const dispatch = useDispatch();
+
+  const img = getResultImage(results.points);
 
   const tryAgain = () => {
     dispatch(resetTestData());
@@ -55,7 +79,7 @@ const ResultsPage = () => {
               </ResultName>
             </Results>
           </WrapperRelative>
-          <Img src={cat} alt="cat" />
+          <Img src={img} alt="cat" />
           <ResultTitle>{results.title}</ResultTitle>
           <ResultDescription>{results.description}</ResultDescription>
           <Button onClick={tryAgain}>Try again</Button>
