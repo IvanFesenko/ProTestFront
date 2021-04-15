@@ -30,15 +30,15 @@ import {
 
 const getResultImage = id => {
   switch (id) {
-    case 0:
-      return cat0;
     case 1:
-      return cat1;
+      return cat0;
     case 2:
-      return cat2;
+      return cat1;
     case 3:
-      return cat3;
+      return cat2;
     case 4:
+      return cat3;
+    case 5:
       return cat4;
     default:
       return cat5;
@@ -62,7 +62,7 @@ const ResultsPage = () => {
 
   return (
     <Wrapper>
-      {results && (
+      {results ? (
         <>
           <SectionTitle>
             Results<TestName>{`[ Testing ${results.type}_]`}</TestName>
@@ -88,6 +88,8 @@ const ResultsPage = () => {
           <ResultDescription>{results.description}</ResultDescription>
           <Button onClick={tryAgain}>Try again</Button>
         </>
+      ) : (
+        <SectionTitle>You should finish test first</SectionTitle>
       )}
     </Wrapper>
   );

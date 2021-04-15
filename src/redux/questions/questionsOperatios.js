@@ -57,23 +57,23 @@ const sendAnswers = createAsyncThunk(
       }).length;
       const incorrect = response.length - correct;
       if (correct === 0) {
-        points = 0;
+        points = 1;
         title = 'WTF?';
         description = 'You should looking another kind of job';
       } else if (correct > 0 && correct < 6) {
-        points = 1;
+        points = 2;
         title = 'To sad';
         description = 'Your result make me cry';
       } else if (correct >= 6 && correct < 9) {
-        points = 2;
+        points = 3;
         title = 'Cool';
         description = 'I like your knowledge';
       } else if (correct >= 9 && correct < 12) {
-        points = 3;
+        points = 4;
         title = 'Not bad';
         description = 'But you still need to learn some materials.';
       } else {
-        points = 4;
+        points = 5;
         title = 'Wow';
         description = "It's amazing. Could you get same result again?";
       }
