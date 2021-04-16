@@ -124,4 +124,5 @@ export const Button = styled.button`
   line-height: 17px;
   letter-spacing: 0.02em;
   text-align: center;
+  cursor: pointer;
 `;

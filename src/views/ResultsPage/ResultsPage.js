@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { ResultsChartPie, SectionTitle } from 'components';
 import { getResult } from 'redux/questions/questionsSelector';
-import { resetTestData } from 'redux/questions/questionsSlice';
+import { resetCurrentTestData } from 'redux/questions/questionsSlice';
 
 import cat0 from 'assets/images/cat0.png';
 import cat1 from 'assets/images/cat1.png';
@@ -56,7 +56,7 @@ const ResultsPage = () => {
   }, [results]);
 
   const tryAgain = () => {
-    dispatch(resetTestData());
+    dispatch(resetCurrentTestData());
     history.push('/test');
   };
 
