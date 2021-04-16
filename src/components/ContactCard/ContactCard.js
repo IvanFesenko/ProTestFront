@@ -14,7 +14,7 @@ import {
 const ContactCard = ({ img, name, position, social, location }) => {
   return (
     <Card>
-      <Photo src={img} alt={name} />
+      <Photo src={img} alt={name} width="250" height="250" />
       <DescriptionWrapper>
         <Name>{name}</Name>
         <Position>{position}</Position>

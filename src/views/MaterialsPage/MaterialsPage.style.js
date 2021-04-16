@@ -1,9 +1,14 @@
 import styled from 'styled-components';
 
+import { orange } from 'assets/colors';
+
 export const Wrapper = styled.div`
-  padding: 40px 0 110px 0;
+  padding: 40px 0;
   @media (min-width: 750px) {
-    padding: 120px 0 410px 0;
+    padding: 120px 0;
+  }
+  @media (min-width: 1200px) {
+    padding: 98px 0;
   }
 `;
 
@@ -65,4 +70,10 @@ export const ListItem = styled.li`
 
 export const Link = styled.a`
   color: black;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  :hover,
+  :focus {
+    color: ${orange};
+  }
 `;

@@ -2,8 +2,6 @@ import React from 'react';
 import { setAnswer } from 'redux/questions/questionsSlice';
 import { FormControlLabel, makeStyles } from '@material-ui/core';
 
-import Skeleton from '@material-ui/lab/Skeleton';
-
 import RadioOrange from './Radiostyles';
 import {
   QuestionCardStyle,
@@ -21,7 +19,7 @@ import { useDispatch } from 'react-redux';
 const useStyles = makeStyles({
   test: {
     display: 'flex',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     fontWeight: 500,
     '& .MuiTypography-body1': {
       fontFamily: 'Montserrat',

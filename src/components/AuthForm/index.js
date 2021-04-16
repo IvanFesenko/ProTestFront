@@ -1,1 +1,1 @@
-export { AuthForm, useStyles } from './AuthForm';
+export { AuthForm } from './AuthForm';

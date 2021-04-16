@@ -1,9 +1,7 @@
-
 import React from 'react';
 import { Suspense, useEffect } from 'react';
 import { Switch, useLocation, Route } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-
 
 import {
   Header,
@@ -15,11 +13,19 @@ import {
   LoaderComponent,
   GoogleRedirect,
 } from 'components';
-import { AuthPage, ContactsPage, MaterialsPage, ResultsPage } from 'views';
+
+import {
+  AuthPage,
+  ContactsPage,
+  MaterialsPage,
+  ResultsPage,
+  NotFoundPage,
+} from 'views';
 import { getToken } from 'redux/auth/authSelectors';
 import authOperations from 'redux/auth/authOperations';
 import PrivateRoute from 'components/PrivateRoute';
 import PublicRoute from 'components/PublicRoute';
+import ChangePasswordForm from 'components/PersonalSettings/ChangePasswordForm/ChangePasswordForm';
 
 function App() {
   const dispatch = useDispatch();
@@ -73,10 +79,18 @@ function App() {
             <PrivateRoute path="/results" redirectTo="/auth">
               <ResultsPage />
             </PrivateRoute>
-    
-            <PrivateRoute path="/profile" redirectTo="/auth">
+
+            <PrivateRoute path="/profile" redirectTo="/auth" exact>
               <PersonalSettings />
             </PrivateRoute>
+
+            <PrivateRoute path="/change-password" redirectTo="/auth">
+              <ChangePasswordForm />
+            </PrivateRoute>
+
+            <Route>
+              <NotFoundPage />
+            </Route>
           </Switch>
         </Suspense>
       </Main>

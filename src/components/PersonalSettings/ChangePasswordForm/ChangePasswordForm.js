@@ -1,7 +1,8 @@
+import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router';
 import { CircularProgress, makeStyles } from '@material-ui/core';
 
-import { useEffect, useState } from 'react';
-import { useStyles as useStylesForm } from 'components/AuthForm';
+import { changePassword } from 'services/API';
 
 import {
   Field,
@@ -24,7 +25,6 @@ const useStylesLoader = makeStyles({
 });
 
 function ChangePasswordForm() {
-  const classes = useStylesForm();
   const styleLoader = useStylesLoader();
   const [oldPassword, setSldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -32,6 +32,7 @@ function ChangePasswordForm() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [sending, setSending] = useState(false);
   const [error, setError] = useState(null);
+  const history = useHistory();
 
   useEffect(() => {
     let showError;
@@ -59,7 +60,7 @@ function ChangePasswordForm() {
     }
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
 
     if (newPassword !== confirmPassword) {
@@ -70,6 +71,13 @@ function ChangePasswordForm() {
     setSldPassword('');
     setNewPassword('');
     setConfirmPassword('');
+    const result = await changePassword({ newPassword, oldPassword });
+    if (result) {
+      history.push('/');
+    } else {
+      setError('Something were wrong((( Please try again');
+      setSending(false);
+    }
   };
 
   return (
@@ -84,7 +92,6 @@ function ChangePasswordForm() {
         </FormHeader>
 
         <Field
-          className={classes.root}
           label="Old Password"
           variant="outlined"
           type={showPassword ? 'text' : 'password'}
@@ -94,7 +101,6 @@ function ChangePasswordForm() {
           onChange={handleChange}
         />
         <Field
-          className={classes.root}
           label="New Password"
           variant="outlined"
           type={showPassword ? 'text' : 'password'}
@@ -104,7 +110,6 @@ function ChangePasswordForm() {
           onChange={handleChange}
         />
         <Field
-          className={classes.root}
           label="Confirm new password"
           variant="outlined"
           type={showPassword ? 'text' : 'password'}

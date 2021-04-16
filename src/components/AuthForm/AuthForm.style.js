@@ -126,7 +126,7 @@ export const SignBlock = styled.div`
 export const SignButton = styled.button`
   position: relative;
   width: 110px;
-  padding: 67px;
+  height: 67px;
   background-color: ${({ active }) => (active ? `${orange}` : '#ffffff')};
   border: ${({ active }) =>
     active ? '1px solid transparent' : '1px solid #ced2d1'};

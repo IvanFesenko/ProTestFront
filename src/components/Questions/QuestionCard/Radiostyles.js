@@ -5,7 +5,8 @@ import { orange } from 'assets/colors';
 const RadioOrange = withStyles({
   root: {
     color: '#000000',
-    paddingTop: 0,
+    padding: 0,
+    marginRight: '20px',
     '&$checked': {
       color: orange,
     },

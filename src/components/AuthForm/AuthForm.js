@@ -127,4 +127,4 @@ const AuthForm = ({ auth }) => {
   );
 };
 
-export { AuthForm, useStyles };
+export { AuthForm };
