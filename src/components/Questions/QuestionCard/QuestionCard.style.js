@@ -20,8 +20,7 @@ const QuestionCardStyle = styled.div`
 const QuestionBodyStyle = styled.div`
   width: 100%;
   text-align: left;
-  padding-top: 40px;
-  padding-left: 12px;
+  padding: 40px 0 0 12px;
 `;
 
 const QuestionItemStyle = styled.div`
