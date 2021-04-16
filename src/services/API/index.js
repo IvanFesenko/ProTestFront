@@ -30,12 +30,17 @@ export const authLogOut = async () => {
   return response;
 };
 
+export const getUser = async () => {
+  const { data } = await Axios.get('/current-user');
+  return data.responseBody;
+};
+
 export const getTechnicalTests = async () => {
   try {
     const { data } = await Axios.get('/tests/technical');
     return data.requestBody;
   } catch (error) {
-    return error;
+    throw new Error(error);
   }
 };
 
@@ -44,7 +49,7 @@ export const getTheoreticalTests = async () => {
     const { data } = await Axios.get('/tests/theoretical');
     return data.requestBody;
   } catch (error) {
-    return error;
+    throw new Error(error);
   }
 };
 
@@ -53,7 +58,7 @@ export const sendAnswersTechnical = async answerData => {
     const { data } = await Axios.post('/tests/technical', answerData);
     return data.requestBody;
   } catch (error) {
-    return error;
+    throw new Error(error);
   }
 };
 
@@ -62,16 +67,7 @@ export const sendAnswersTheoretical = async answerData => {
     const { data } = await Axios.post('/tests/theoretical', answerData);
     return data.requestBody;
   } catch (error) {
-    return error;
-  }
-};
-
-export const getUser = async () => {
-  try {
-    const response = await Axios.get('/current-user');
-    return response.data.responseBody;
-  } catch (e) {
-    throw new Error(e);
+    throw new Error(error);
   }
 };
 

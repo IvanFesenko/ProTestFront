@@ -19,7 +19,7 @@ import { useDispatch } from 'react-redux';
 const useStyles = makeStyles({
   test: {
     display: 'flex',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     fontWeight: 500,
     '& .MuiTypography-body1': {
       fontFamily: 'Montserrat',

@@ -4,8 +4,10 @@ import { mainBackground, greyLine } from 'assets/colors';
 
 export default styled.header`
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  height: 72px;
+  padding: 0 20px;
   background-color: ${mainBackground};
   border: 1px solid ${greyLine};
   position: relative;
