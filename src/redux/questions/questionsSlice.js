@@ -35,6 +35,11 @@ const questionsSlice = createSlice({
     resetTestData: (state, _) => {
       resetStore(state);
     },
+
+    resetCurrentTestData: (state, _) => {
+      state.currentQuestion = 0;
+      state.questions = [];
+    },
   },
   extraReducers: {
     [getQuestions.fulfilled](state, action) {
@@ -57,5 +62,6 @@ export const {
   setCurrentQuestions,
   setTypeTest,
   resetTestData,
+  resetCurrentTestData,
 } = questionsSlice.actions;
 export default questionsSlice.reducer;

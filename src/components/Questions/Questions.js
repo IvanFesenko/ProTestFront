@@ -48,11 +48,15 @@ function Questions() {
   }, [dispatch, typeTest, questions]);
 
   useEffect(() => {
+    let showError;
     if (error) {
-      setTimeout(() => {
+      showError = setTimeout(() => {
         setError(null);
       }, 3000);
     }
+    return () => {
+      clearTimeout(showError);
+    };
   }, [error]);
 
   const sendResponse = () => {
