@@ -40,7 +40,7 @@ export const getTechnicalTests = async () => {
     const { data } = await Axios.get('/tests/technical');
     return data.requestBody;
   } catch (error) {
-    return error;
+    throw new Error(error);
   }
 };
 
@@ -49,7 +49,7 @@ export const getTheoreticalTests = async () => {
     const { data } = await Axios.get('/tests/theoretical');
     return data.requestBody;
   } catch (error) {
-    return error;
+    throw new Error(error);
   }
 };
 
@@ -58,7 +58,7 @@ export const sendAnswersTechnical = async answerData => {
     const { data } = await Axios.post('/tests/technical', answerData);
     return data.requestBody;
   } catch (error) {
-    return error;
+    throw new Error(error);
   }
 };
 
@@ -67,7 +67,7 @@ export const sendAnswersTheoretical = async answerData => {
     const { data } = await Axios.post('/tests/theoretical', answerData);
     return data.requestBody;
   } catch (error) {
-    return error;
+    throw new Error(error);
   }
 };
 

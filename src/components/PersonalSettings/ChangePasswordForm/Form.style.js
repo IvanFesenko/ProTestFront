@@ -51,6 +51,10 @@ const ErrorMsg = styled.p`
   @media (min-width: 768px) {
     bottom: 28%;
   }
+
+  @media (min-width: 1198px) {
+    bottom: 26%;
+  }
 `;
 
 export { Form, ErrorMsg, FormWrapper, FormHeader, TextHeader };
